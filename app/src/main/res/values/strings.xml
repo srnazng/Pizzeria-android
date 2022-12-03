@@ -4,4 +4,17 @@
     <string name="ny_pizza">NY Pizza</string>
     <string name="store_orders">Store Orders</string>
     <string name="cart">Cart</string>
+    <string name="crust">Crust</string>
+    <string name="chicago_style_pizza">Chicago Style Pizza</string>
+    <string name="small">Small</string>
+    <string name="medium">Medium</string>
+    <string name="large">Large</string>
+    <string name="pizza_price">Pizza Price: $</string>
+    <string name="add_to_order">Add to Order</string>
+    <string-array name="pizza_types">
+        <item>Build Your Own</item>
+        <item>Deluxe</item>
+        <item>BBQ Chicken</item>
+        <item>Meatzza</item>
+    </string-array>
 </resources>
