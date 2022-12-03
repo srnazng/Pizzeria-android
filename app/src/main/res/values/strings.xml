@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">RU Pizza</string>
+    <string name="chicago_pizza">Chicago Pizza</string>
+    <string name="ny_pizza">NY Pizza</string>
+    <string name="store_orders">Store Orders</string>
+    <string name="cart">Cart</string>
 </resources>
