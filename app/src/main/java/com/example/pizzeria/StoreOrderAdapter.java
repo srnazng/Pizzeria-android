@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.ItemsHolder>{
+public class StoreOrderAdapter extends RecyclerView.Adapter<StoreOrderAdapter.ItemsHolder>{
 
     private Context context;
     private ArrayList<Pizza> pizzas;
 
-    public PizzaAdapter(Context context, ArrayList<Pizza> pizzas) {
+    public StoreOrderAdapter(Context context, ArrayList<Pizza> pizzas) {
         this.context = context;
         this.pizzas = pizzas;
     }

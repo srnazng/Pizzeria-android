@@ -38,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
         btnStoreOrders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(MainActivity.this, StoreOrdersActivity.class);
+                startActivity(i);
             }
         });
 

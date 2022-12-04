@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Pizzeria"
         tools:targetApi="31">
         <activity
-            android:name=".PIzzaActivity"
+            android:name=".StoreOrdersActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
