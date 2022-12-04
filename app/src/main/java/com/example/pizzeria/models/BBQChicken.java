@@ -1,8 +1,7 @@
-package com.example.pizzeria;
+package com.example.pizzeria.models;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * The BBQChicken class extends the abstract Pizza class.
@@ -10,7 +9,7 @@ import java.util.List;
  * and calculating the BBQ Chicken pizza prices based on size.
  * @author Serena Zeng, Jackson Lee
  */
-public class BBQChicken extends Pizza{
+public class BBQChicken extends Pizza {
     private static final double SMALL_PRICE = 13.99;
     private static final double MED_PRICE = 15.99;
     private static final double LARGE_PRICE = 17.99;

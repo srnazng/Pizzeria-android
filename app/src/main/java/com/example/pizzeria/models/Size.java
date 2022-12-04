@@ -1,4 +1,4 @@
-package com.example.pizzeria;
+package com.example.pizzeria.models;
 
 /**
  * The Size enum defines the different size options of a pizza

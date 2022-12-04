@@ -1,4 +1,4 @@
-package com.example.pizzeria;
+package com.example.pizzeria.models;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * and uniquely identified by an integer id.
  * @author Serena Zeng, Jackson Lee
  */
-public class Order implements Customizable{
+public class Order implements Customizable {
     private boolean valid;
     private ArrayList<Pizza> pizzaList;
     private int orderNumber;

@@ -9,14 +9,16 @@ import android.widget.CheckBox;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pizzeria.models.Pizza;
+
 import java.util.ArrayList;
 
-public class StoreOrderAdapter extends RecyclerView.Adapter<StoreOrderAdapter.ItemsHolder>{
+public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.ItemsHolder>{
 
     private Context context;
     private ArrayList<Pizza> pizzas;
 
-    public StoreOrderAdapter(Context context, ArrayList<Pizza> pizzas) {
+    public PizzaAdapter(Context context, ArrayList<Pizza> pizzas) {
         this.context = context;
         this.pizzas = pizzas;
     }

@@ -1,11 +1,11 @@
-package com.example.pizzeria;
+package com.example.pizzeria.models;
 
 /**
  * The ChicagoPizza class implements the PizzaFactory interface.
  * This class includes methods to create different types of pizzas with Chicago style crusts.
  * @author Serena Zeng, Jackson Lee
  */
-public class ChicagoPizza implements PizzaFactory{
+public class ChicagoPizza implements PizzaFactory {
 
     /**
      * Create Chicago Deluxe pizza with Deep Dish crust

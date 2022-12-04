@@ -1,4 +1,4 @@
-package com.example.pizzeria;
+package com.example.pizzeria.models;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * interface and contains a list of all orders of a store.
  * @author Serena Zeng, Jackson Lee
  */
-public class StoreOrder implements Customizable{
+public class StoreOrder implements Customizable {
     private ArrayList<Order> orderList;
     private Order currentOrder;
     public static StoreOrder storeOrder = new StoreOrder();
@@ -60,6 +60,9 @@ public class StoreOrder implements Customizable{
      * @return  new order number
      */
     public int generateOrderId(){
+        if(orderList == null){
+            return 0;
+        }
         return orderList.size() + 1;
     }
 

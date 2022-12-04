@@ -1,4 +1,4 @@
-package com.example.pizzeria;
+package com.example.pizzeria.models;
 
 /**
  * The Crust enum defines different types of crusts

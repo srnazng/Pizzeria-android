@@ -1,4 +1,4 @@
-package com.example.pizzeria;
+package com.example.pizzeria.models;
 
 /**
  * The BuidlYourOwn class extends the abstract Pizza class.
@@ -6,7 +6,7 @@ package com.example.pizzeria;
  * and calculating the Build Your Own pizza prices based on size and toppings.
  * @author Serena Zeng, Jackson Lee
  */
-public class BuildYourOwn extends Pizza{
+public class BuildYourOwn extends Pizza {
     private static final double SMALL_PRICE = 8.99;
     private static final double MED_PRICE = 10.99;
     private static final double LARGE_PRICE = 12.99;

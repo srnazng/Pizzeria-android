@@ -1,21 +1,16 @@
 package com.example.pizzeria;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.pizzeria.models.Topping;
 
 import java.util.ArrayList;
 
@@ -34,10 +29,18 @@ import java.util.ArrayList;
 public class ToppingsAdapter extends RecyclerView.Adapter<ToppingsAdapter.ItemsHolder>{
     private Context context; //need the context to inflate the layout
     private ArrayList<Topping> items; //need the data binding to each row of RecyclerView
+    private boolean disableToppings;
+    public static ArrayList<Topping> selectedToppings;
 
     public ToppingsAdapter(Context context, ArrayList<Topping> items) {
         this.context = context;
         this.items = items;
+        selectedToppings = new ArrayList<>();
+        disableToppings = false;
+    }
+
+    public void setDisableToppings(boolean disableToppings){
+        this.disableToppings = disableToppings;
     }
 
     /**
@@ -65,7 +68,29 @@ public class ToppingsAdapter extends RecyclerView.Adapter<ToppingsAdapter.ItemsH
     @Override
     public void onBindViewHolder(@NonNull ItemsHolder holder, int position) {
         //assign values for each row
-        holder.cbTopping.setText(items.get(position).toString());
+        Topping topping = items.get(position);
+        holder.cbTopping.setText(topping.toString());
+
+        if (disableToppings){
+            holder.cbTopping.setChecked(true);
+            holder.cbTopping.setEnabled(false);
+        }
+        else{
+            holder.cbTopping.setChecked(false);
+            holder.cbTopping.setEnabled(true);
+        }
+
+        holder.cbTopping.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    selectedToppings.add(topping);
+                }
+                else {
+                    selectedToppings.remove(topping);
+                }
+            }
+        });
     }
 
     /**

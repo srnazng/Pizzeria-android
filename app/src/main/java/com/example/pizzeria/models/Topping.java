@@ -1,4 +1,4 @@
-package com.example.pizzeria;
+package com.example.pizzeria.models;
 
 import java.util.ArrayList;
 import java.util.List;

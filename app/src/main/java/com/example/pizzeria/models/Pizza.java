@@ -1,4 +1,4 @@
-package com.example.pizzeria;
+package com.example.pizzeria.models;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

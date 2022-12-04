@@ -12,6 +12,19 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.pizzeria.models.BBQChicken;
+import com.example.pizzeria.models.BuildYourOwn;
+import com.example.pizzeria.models.ChicagoPizza;
+import com.example.pizzeria.models.Crust;
+import com.example.pizzeria.models.Deluxe;
+import com.example.pizzeria.models.Meatzza;
+import com.example.pizzeria.models.Order;
+import com.example.pizzeria.models.Pizza;
+import com.example.pizzeria.models.Size;
+import com.example.pizzeria.models.StoreOrder;
+import com.example.pizzeria.models.Topping;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -39,8 +52,15 @@ public class ChicagoActivity extends AppCompatActivity {
 
         tvChicagoCrust = findViewById(R.id.tvChicagoCrust);
         tvChicagoPrice = findViewById(R.id.tvChicagoPrice);
-        rgChicagoSize = findViewById(R.id.rgChicagoSize);
         btnAddChicago = findViewById(R.id.btnAddChicago);
+        btnAddChicago.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addToOrder();
+            }
+        });
+
+        rgChicagoSize = findViewById(R.id.rgChicagoSize);
         rgChicagoSize.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
               @Override
               public void onCheckedChanged(RadioGroup group, int checkedId)
@@ -68,44 +88,73 @@ public class ChicagoActivity extends AppCompatActivity {
 
         rvChicagoToppings = findViewById(R.id.rvChicagoToppings);
         toppings = new ArrayList<>();
-        setUpView(); //add the list of items to the ArrayList
         toppingsAdapter = new ToppingsAdapter(this, toppings); //create the adapter
+        setUpView(); //add the list of items to the ArrayList
         rvChicagoToppings.setAdapter(toppingsAdapter);
         //use the LinearLayout for the RecyclerView
         rvChicagoToppings.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    /**
-     * Helper method to set up the data (the Model of the MVC).
-     */
+    private void addToOrder(){
+        String pizzaType = spChicagoType.getSelectedItem().toString();
+        Size size = Size.toSize(rbChicagoSelectedSize.getText().toString());
+
+        ChicagoPizza factory = new ChicagoPizza();
+        Pizza pizza;
+        if(pizzaType.equals("Deluxe")){
+            pizza = factory.createDeluxe();
+        }
+        else if(pizzaType.equals("BBQ Chicken")){
+            pizza = factory.createBBQChicken();
+        }
+        else if(pizzaType.equals("Meatzza")){
+            pizza = factory.createMeatzza();
+        }
+        else{
+            pizza = factory.createBuildYourOwn();
+        }
+        pizza.setSize(size);
+        pizza.add(ToppingsAdapter.selectedToppings);
+        Order currentOrder = StoreOrder.storeOrder.getCurrentOrder();
+        currentOrder.add(pizza);
+        Toast.makeText(ChicagoActivity.this, "Pizza Successfully Added to Cart!", Toast.LENGTH_SHORT).show();
+    }
+
     private void setUpView() {
         String type = spChicagoType.getSelectedItem().toString();
         Size size = Size.toSize(rbChicagoSelectedSize.getText().toString());
-        System.out.println(type);
+
         if(type.equals(getResources().getStringArray(R.array.pizza_types)[0])){
             toppings.clear();
             toppings.addAll(Topping.getAvailableToppings());
-            tvChicagoCrust.setText(PIZZA_CRUST + Crust.PAN.toString());
+            toppingsAdapter.setDisableToppings(false);
+            tvChicagoCrust.setText(PIZZA_CRUST + Crust.PAN);
             tvChicagoPrice.setText(PIZZA_PRICE + df.format(BuildYourOwn.calculatePrice(size, toppings.size())));
         }
         else if(type.equals(getResources().getStringArray(R.array.pizza_types)[1])){
             toppings.clear();
             toppings.addAll(Deluxe.getDeluxeToppings());
-            tvChicagoCrust.setText(PIZZA_CRUST + Crust.DEEP_DISH.toString());
+            toppingsAdapter.setDisableToppings(true);
+            tvChicagoCrust.setText(PIZZA_CRUST + Crust.DEEP_DISH);
             tvChicagoPrice.setText(PIZZA_PRICE + Deluxe.calculatePrice(size));
         }
         else if(type.equals(getResources().getStringArray(R.array.pizza_types)[2])){
             toppings.clear();
             toppings.addAll(BBQChicken.getBBQChickenToppings());
-            tvChicagoCrust.setText(PIZZA_CRUST + Crust.PAN.toString());
+            toppingsAdapter.setDisableToppings(true);
+            tvChicagoCrust.setText(PIZZA_CRUST + Crust.PAN);
             tvChicagoPrice.setText(PIZZA_PRICE + BBQChicken.calculatePrice(size));
         }
         else{
             toppings.clear();
             toppings.addAll(Meatzza.getMeatzzaToppings());
-            tvChicagoCrust.setText(PIZZA_CRUST + Crust.STUFFED.toString());
+            toppingsAdapter.setDisableToppings(true);
+            tvChicagoCrust.setText(PIZZA_CRUST + Crust.STUFFED);
             tvChicagoPrice.setText(PIZZA_PRICE + Meatzza.calculatePrice(size));
         }
-        System.out.println(toppings);
+    }
+
+    private void calculatePrice(){
+
     }
 }

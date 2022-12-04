@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.pizzeria.models.Pizza;
+import com.example.pizzeria.models.StoreOrder;
+
 import java.util.ArrayList;
 
 public class CartActivity extends AppCompatActivity {
@@ -25,7 +28,7 @@ public class CartActivity extends AppCompatActivity {
 
         rvCartPizzas = findViewById(R.id.rvPizzas);
 
-        StoreOrderAdapter adapter = new StoreOrderAdapter(this, pizzaList); //create the adapter
+        PizzaAdapter adapter = new PizzaAdapter(this, pizzaList); //create the adapter
         rvCartPizzas.setAdapter(adapter); //bind the list of items to the RecyclerView
     }
 

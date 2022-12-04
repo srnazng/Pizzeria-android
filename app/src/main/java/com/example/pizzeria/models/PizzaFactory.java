@@ -1,4 +1,4 @@
-package com.example.pizzeria;
+package com.example.pizzeria.models;
 
 /**
  * The PizzaFactory interface defines the methods
