@@ -44,10 +44,8 @@ public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.ItemsHolder>
      * @param position the index of the item in the list of items
      */
     @Override
-    public void onBindViewHolder(@NonNull ToppingsAdapter.ItemsHolder holder, int position) {
-        //assign values for each row
-        //holder.cbTopping.setText(items.get(position).toString());
-        System.out.println("yo");
+    public void onBindViewHolder(@NonNull ItemsHolder holder, int position) {
+
     }
 
     /**
