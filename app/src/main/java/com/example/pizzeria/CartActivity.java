@@ -28,7 +28,7 @@ public class CartActivity extends AppCompatActivity {
 
         rvCartPizzas = findViewById(R.id.rvPizzas);
 
-        PizzaAdapter adapter = new PizzaAdapter(this, pizzaList); //create the adapter
+        PizzaItemAdapter adapter = new PizzaItemAdapter(this, pizzaList); //create the adapter
         rvCartPizzas.setAdapter(adapter); //bind the list of items to the RecyclerView
     }
 

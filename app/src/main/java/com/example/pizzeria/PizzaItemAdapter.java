@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,12 +14,12 @@ import com.example.pizzeria.models.Pizza;
 
 import java.util.ArrayList;
 
-public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.ItemsHolder>{
+public class PizzaItemAdapter extends RecyclerView.Adapter<PizzaItemAdapter.ItemsHolder>{
 
     private Context context;
     private ArrayList<Pizza> pizzas;
 
-    public PizzaAdapter(Context context, ArrayList<Pizza> pizzas) {
+    public PizzaItemAdapter(Context context, ArrayList<Pizza> pizzas) {
         this.context = context;
         this.pizzas = pizzas;
     }
@@ -47,7 +48,7 @@ public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.ItemsHolder>
      */
     @Override
     public void onBindViewHolder(@NonNull ItemsHolder holder, int position) {
-
+        holder.tvPizza.setText("CHANGE ME");
     }
 
     /**
@@ -63,11 +64,11 @@ public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.ItemsHolder>
      * Get the views from the row layout file, similar to the onCreate() method.
      */
     public static class ItemsHolder extends RecyclerView.ViewHolder {
-        private CheckBox cbTopping;
+        private TextView tvPizza;
 
         public ItemsHolder(@NonNull View itemView) {
             super(itemView);
-            cbTopping = itemView.findViewById(R.id.cbTopping);
+            tvPizza = itemView.findViewById(R.id.tvPizza);
         }
     }
 
