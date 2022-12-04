@@ -8,12 +8,11 @@
     tools:context=".ChicagoActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvChicagoStylePizza"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/chicago_style_pizza"
-        android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spChicagoType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -29,32 +28,32 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/tvChicagoStylePizza" />
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/rgChicagoSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner">
+        app:layout_constraintTop_toBottomOf="@+id/spChicagoType">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/rbtnSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/small" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/rbtnMedium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/medium" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/rbtnLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -62,7 +61,7 @@
     </RadioGroup>
 
     <TextView
-        android:id="@+id/tvCrust"
+        android:id="@+id/tvChicagoCrust"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -71,28 +70,29 @@
         android:inputType="none"
         android:textColorHint="#757575"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/rgChicagoSize" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/rvChicagoToppings"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
         android:layout_marginTop="10dp"
+        android:maxHeight="300dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCrust" />
+        app:layout_constraintTop_toBottomOf="@+id/tvChicagoCrust" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvChicagoPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/pizza_price"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/rvChicagoToppings" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnAddChicago"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -100,5 +100,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/tvChicagoPrice" />
 </androidx.constraintlayout.widget.ConstraintLayout>
