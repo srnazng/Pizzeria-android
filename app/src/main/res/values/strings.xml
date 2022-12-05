@@ -6,6 +6,7 @@
     <string name="cart">Cart</string>
     <string name="crust">Crust:\u0020</string>
     <string name="chicago_style_pizza">Chicago Style Pizza</string>
+    <string name="new_york_style_pizza">New York Style Pizza</string>
     <string name="small">Small</string>
     <string name="medium">Medium</string>
     <string name="large">Large</string>
