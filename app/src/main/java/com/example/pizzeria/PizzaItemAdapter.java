@@ -5,12 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pizzeria.models.Pizza;
+import com.example.pizzeria.models.StoreOrder;
 
 import java.util.ArrayList;
 
@@ -35,7 +37,7 @@ public class PizzaItemAdapter extends RecyclerView.Adapter<PizzaItemAdapter.Item
     public ItemsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //inflate the row layout for the items
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.activity_topping, parent, false);
+        View view = inflater.inflate(R.layout.activity_pizza_item, parent, false);
 
         return new ItemsHolder(view);
     }
@@ -48,7 +50,17 @@ public class PizzaItemAdapter extends RecyclerView.Adapter<PizzaItemAdapter.Item
      */
     @Override
     public void onBindViewHolder(@NonNull ItemsHolder holder, int position) {
-        holder.tvPizza.setText("CHANGE ME");
+        Pizza pizza = pizzas.get(position);
+        holder.tvPizza.setText(pizza.toString());
+        holder.ivDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StoreOrder.storeOrder.getCurrentOrder().getPizzaList().remove(pizza);
+                pizzas.remove(pizza);
+                notifyDataSetChanged();
+                CartActivity.updateCosts();
+            }
+        });
     }
 
     /**
@@ -65,10 +77,12 @@ public class PizzaItemAdapter extends RecyclerView.Adapter<PizzaItemAdapter.Item
      */
     public static class ItemsHolder extends RecyclerView.ViewHolder {
         private TextView tvPizza;
+        private ImageView ivDelete;
 
         public ItemsHolder(@NonNull View itemView) {
             super(itemView);
             tvPizza = itemView.findViewById(R.id.tvPizza);
+            ivDelete = itemView.findViewById(R.id.ivDelete);
         }
     }
 

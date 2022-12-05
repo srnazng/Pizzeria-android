@@ -6,11 +6,25 @@
     android:layout_height="wrap_content"
     tools:context=".PizzaItemActivity">
 
-    <TextView
-        android:id="@+id/tvPizza"
+    <ImageView
+        android:id="@+id/ivDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cart Empty"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_delete"
+        app:tint="#000000" />
+
+    <TextView
+        android:id="@+id/tvPizza"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="32dp"
+        android:paddingBottom="5dp"
+        android:text="@string/cart_empty"
+        android:textIsSelectable="true"
+        app:layout_constraintEnd_toStartOf="@+id/ivDelete"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

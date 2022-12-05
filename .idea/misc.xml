@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/activity_cart.xml" value="0.29352722167968737" />
         <entry key="app/src/main/res/layout/activity_chicago.xml" value="0.33071903279004006" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3427835051546392" />
+        <entry key="app/src/main/res/layout/activity_new_york.xml" value="0.14764492753623187" />
         <entry key="app/src/main/res/layout/activity_pizza_item.xml" value="0.3051119927094217" />
         <entry key="app/src/main/res/layout/activity_topping.xml" value="0.3248999333036119" />
       </map>
