@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Cart"
+        android:text="@string/cart"
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
