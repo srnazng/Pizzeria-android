@@ -25,10 +25,14 @@ import com.example.pizzeria.models.Pizza;
 import com.example.pizzeria.models.Size;
 import com.example.pizzeria.models.StoreOrder;
 import com.example.pizzeria.models.Topping;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+/**
+ * The NewYorkActivity class is the controller for the activity_new_york page.
+ * This class initiates UI components and handles user interaction events
+ * @author Serena Zeng, Jackson Lee
+ */
 public class NewYorkActivity extends AppCompatActivity {
     private RecyclerView rvNewYorkToppings;
     private Spinner spNewYorkType;
@@ -48,6 +52,11 @@ public class NewYorkActivity extends AppCompatActivity {
     private static String type;
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
+    /**
+     * Create a NewYorkActivity activity, and load a past saved state
+     * of the activity if the activity is being reloaded
+     * @param savedInstanceState   saved past state of activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +79,10 @@ public class NewYorkActivity extends AppCompatActivity {
         init();
     }
 
+    /**
+     * Bind listeners for all UI components, including add pizza button, size
+     * radio group, pizza type spinner, and toppings recycler view
+     */
     private void init(){
         btnAddNewYork.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +125,10 @@ public class NewYorkActivity extends AppCompatActivity {
         rvNewYorkToppings.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    /**
+     * Add a pizza to the current order
+     * A toast is shown on success
+     */
     private void addToOrder(){
         String pizzaType = spNewYorkType.getSelectedItem().toString();
         Size size = Size.toSize(rbNewYorkSelectedSize.getText().toString());
@@ -137,6 +154,10 @@ public class NewYorkActivity extends AppCompatActivity {
         Toast.makeText(NewYorkActivity.this, "Pizza Successfully Added to Cart!", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Populate the UI components of the page in accordance
+     * With the pizza type and size
+     */
     private void setUpView() {
         String type = spNewYorkType.getSelectedItem().toString();
         Size size = Size.toSize(rbNewYorkSelectedSize.getText().toString());
@@ -171,6 +192,11 @@ public class NewYorkActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Calculate the price of the pizza being ordered
+     * and set the price text field in the UI
+     * @param numToppings   Number of toppings on the pizza
+     */
     public static void calculatePrice(int numToppings){
         if(type.equals(MEATZZA)){
             tvNewYorkPrice.setText(PIZZA_PRICE + Meatzza.calculatePrice(size));

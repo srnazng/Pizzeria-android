@@ -18,9 +18,10 @@ public class MainActivity extends AppCompatActivity {
     private Button btnStoreOrders, btnCart;
 
     /**
-     * Create a MainActivity activity, and load a saved instance
-     * of the activity is being reloaded. Bind listeners
-     * @param savedInstanceState
+     * Create a MainActivity activity, and load a past saved state of the
+     * activity if the activity is being reloaded. Bind listeners to navigate
+     * to other pages.
+     * @param savedInstanceState  saved past state of activity
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

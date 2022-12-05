@@ -16,20 +16,30 @@ import com.example.pizzeria.models.StoreOrder;
 
 import java.util.ArrayList;
 
+/**
+ * The PizzaItemAdapter class binds the information about the pizzas in the current
+ * order with items in the recycler view of activity_cart.xml
+ * @author Serena Zeng, Jackson Lee
+ */
 public class PizzaItemAdapter extends RecyclerView.Adapter<PizzaItemAdapter.ItemsHolder>{
 
     private Context context;
     private ArrayList<Pizza> pizzas;
 
+    /**
+     * Create a PizzaItemAdapter from the current context and list of pizzas.
+     * @param context   Current context of app
+     * @param pizzas    List of pizzas to be displayed in cart
+     */
     public PizzaItemAdapter(Context context, ArrayList<Pizza> pizzas) {
         this.context = context;
         this.pizzas = pizzas;
     }
 
     /**
-     * This method will inflate the row layout for the items in the RecyclerView
-     * @param parent
-     * @param viewType
+     * This method will inflate the row layout for the pizza items in the RecyclerView
+     * @param parent  parent viewgroup of new view to be created
+     * @param viewType  view type constant
      * @return
      */
     @NonNull
@@ -43,10 +53,10 @@ public class PizzaItemAdapter extends RecyclerView.Adapter<PizzaItemAdapter.Item
     }
 
     /**
-     * Assign data values for each row according to their "position" (index) when the item becomes
-     * visible on the screen.
+     * Assign data values for each row according to their "position" (index) when the pizza
+     * item becomes visible on the screen.
      * @param holder the instance of ItemsHolder
-     * @param position the index of the item in the list of items
+     * @param position the index of the pizza item in the list of items
      */
     @Override
     public void onBindViewHolder(@NonNull ItemsHolder holder, int position) {
@@ -64,7 +74,7 @@ public class PizzaItemAdapter extends RecyclerView.Adapter<PizzaItemAdapter.Item
     }
 
     /**
-     * Get the number of items in the ArrayList.
+     * Get the number of pizza items in the ArrayList.
      * @return the number of items in the list.
      */
     @Override

@@ -20,6 +20,11 @@ import com.example.pizzeria.models.StoreOrder;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+/**
+ * The StoreOrdersActivity class is the controller for the activity_store_orders.xml page.
+ * This class initiates all UI components and handles user interaction events.
+ * @author Serena Zeng, Jackson Lee
+ */
 public class StoreOrdersActivity extends AppCompatActivity {
     private Spinner spOrderNum;
     private ImageView btnCancelOrder;
@@ -29,6 +34,12 @@ public class StoreOrdersActivity extends AppCompatActivity {
     private Order order;
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
+    /**
+     * Create a StoreOrdersActivity activity, and load a past saved state
+     * of the activity if the activity is being reloaded. Bind listeners for
+     * all UI components.
+     * @param savedInstanceState  past saved state of activity.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +85,10 @@ public class StoreOrdersActivity extends AppCompatActivity {
         init();
     }
 
+    /**
+     * Populate UI components of the page upon creation of the activity
+     * or deletion of an order.
+     */
     private void init(){
         orderNumAdapter = new ArrayAdapter<Integer>(StoreOrdersActivity.this,
                 android.R.layout.simple_spinner_dropdown_item,
@@ -91,6 +106,9 @@ public class StoreOrdersActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Populate the ListView of orders by setting its adapter
+     */
     private void updateList(){
         ArrayAdapter<Pizza> arrayAdapter = new ArrayAdapter<Pizza>(
                 this,
@@ -99,6 +117,9 @@ public class StoreOrdersActivity extends AppCompatActivity {
         lvOrder.setAdapter(arrayAdapter);
     }
 
+    /**
+     * Clear the LIstView of orders
+     */
     private void clearList(){
         order = null;
         ArrayAdapter<Pizza> arrayAdapter = new ArrayAdapter<Pizza>(

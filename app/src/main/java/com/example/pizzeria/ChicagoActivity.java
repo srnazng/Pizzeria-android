@@ -54,7 +54,7 @@ public class ChicagoActivity extends AppCompatActivity {
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
     /**
-     * Create a ChicagoActivity activity, and load a saved instance of
+     * Create a ChicagoActivity activity, and load a past saved state of
      * the activity if the activity is being reloaded
      * @param savedInstanceState  saved past state of the activity
      */
@@ -157,7 +157,7 @@ public class ChicagoActivity extends AppCompatActivity {
 
     /**
      * Populate the UI components of the page in accordance
-     * with the pizza type
+     * with the pizza type and size.
      */
     private void setUpView() {
         String type = spChicagoType.getSelectedItem().toString();
