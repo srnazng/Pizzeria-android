@@ -105,7 +105,7 @@ public class ChicagoActivity extends AppCompatActivity {
         });
 
         toppings = new ArrayList<>();
-        toppingsAdapter = new ToppingsAdapter(this, toppings); //create the adapter
+        toppingsAdapter = new ToppingsAdapter(this, toppings, true); //create the adapter
         setUpView(); //add the list of items to the ArrayList
         rvChicagoToppings.setAdapter(toppingsAdapter);
         //use the LinearLayout for the RecyclerView

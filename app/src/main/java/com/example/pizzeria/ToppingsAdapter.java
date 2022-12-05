@@ -30,11 +30,13 @@ public class ToppingsAdapter extends RecyclerView.Adapter<ToppingsAdapter.ItemsH
     private Context context; //need the context to inflate the layout
     private ArrayList<Topping> items; //need the data binding to each row of RecyclerView
     private boolean disableToppings;
+    private boolean isChicago;
     public static ArrayList<Topping> selectedToppings;
 
-    public ToppingsAdapter(Context context, ArrayList<Topping> items) {
+    public ToppingsAdapter(Context context, ArrayList<Topping> items, boolean isChicago) {
         this.context = context;
         this.items = items;
+        this.isChicago = isChicago;
         selectedToppings = new ArrayList<>();
         disableToppings = false;
     }
@@ -89,7 +91,12 @@ public class ToppingsAdapter extends RecyclerView.Adapter<ToppingsAdapter.ItemsH
                 else {
                     selectedToppings.remove(topping);
                 }
-                ChicagoActivity.calculatePrice(selectedToppings.size());
+                if(isChicago){
+                    ChicagoActivity.calculatePrice(selectedToppings.size());
+                }
+                else{
+                    NewYorkActivity.calculatePrice(selectedToppings.size());
+                }
             }
         });
     }

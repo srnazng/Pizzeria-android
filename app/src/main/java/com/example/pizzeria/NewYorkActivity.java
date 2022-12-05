@@ -105,7 +105,7 @@ public class NewYorkActivity extends AppCompatActivity {
         });
 
         toppings = new ArrayList<>();
-        toppingsAdapter = new ToppingsAdapter(this, toppings); //create the adapter
+        toppingsAdapter = new ToppingsAdapter(this, toppings, false); //create the adapter
         setUpView(); //add the list of items to the ArrayList
         rvNewYorkToppings.setAdapter(toppingsAdapter);
         //use the LinearLayout for the RecyclerView
@@ -145,28 +145,28 @@ public class NewYorkActivity extends AppCompatActivity {
             toppings.clear();
             toppings.addAll(Topping.getAvailableToppings());
             toppingsAdapter.setDisableToppings(false);
-            tvNewYorkCrust.setText(PIZZA_CRUST + Crust.PAN);
+            tvNewYorkCrust.setText(PIZZA_CRUST + Crust.HAND_TOSSED);
             tvNewYorkPrice.setText(PIZZA_PRICE + df.format(BuildYourOwn.calculatePrice(size, toppings.size())));
         }
         else if(type.equals(getResources().getStringArray(R.array.pizza_types)[1])){
             toppings.clear();
             toppings.addAll(Deluxe.getDeluxeToppings());
             toppingsAdapter.setDisableToppings(true);
-            tvNewYorkCrust.setText(PIZZA_CRUST + Crust.DEEP_DISH);
+            tvNewYorkCrust.setText(PIZZA_CRUST + Crust.BROOKLYN);
             tvNewYorkPrice.setText(PIZZA_PRICE + Deluxe.calculatePrice(size));
         }
         else if(type.equals(getResources().getStringArray(R.array.pizza_types)[2])){
             toppings.clear();
             toppings.addAll(BBQChicken.getBBQChickenToppings());
             toppingsAdapter.setDisableToppings(true);
-            tvNewYorkCrust.setText(PIZZA_CRUST + Crust.PAN);
+            tvNewYorkCrust.setText(PIZZA_CRUST + Crust.THIN);
             tvNewYorkPrice.setText(PIZZA_PRICE + BBQChicken.calculatePrice(size));
         }
         else{
             toppings.clear();
             toppings.addAll(Meatzza.getMeatzzaToppings());
             toppingsAdapter.setDisableToppings(true);
-            tvNewYorkCrust.setText(PIZZA_CRUST + Crust.STUFFED);
+            tvNewYorkCrust.setText(PIZZA_CRUST + Crust.HAND_TOSSED);
             tvNewYorkPrice.setText(PIZZA_PRICE + Meatzza.calculatePrice(size));
         }
     }

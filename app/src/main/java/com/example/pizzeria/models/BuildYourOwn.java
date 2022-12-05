@@ -1,5 +1,7 @@
 package com.example.pizzeria.models;
 
+import androidx.annotation.NonNull;
+
 /**
  * The BuidlYourOwn class extends the abstract Pizza class.
  * This class is responsible for adding the user selected toppings
@@ -57,6 +59,7 @@ public class BuildYourOwn extends Pizza {
      * including pizza type, crust, size and toppings
      * @return  Build Your Own object as String
      */
+    @NonNull
     @Override
     public String toString(){
         return "Build Your Own " + super.toString();

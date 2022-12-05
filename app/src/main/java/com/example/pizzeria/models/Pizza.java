@@ -99,10 +99,10 @@ public abstract class Pizza implements Customizable {
     public String toString(){
         StringBuilder str = new StringBuilder("(");
         if(isChicago){
-            str.append("Chicago Style - Pan), ");
+            str.append("Chicago Style - ").append(crust).append("), ");
         }
         else{
-            str.append("NY Style - Thin), ");
+            str.append("NY Style - ").append(crust).append("), ");
         }
         ArrayList<Topping> toppings = getToppings();
         for(Topping t : toppings){

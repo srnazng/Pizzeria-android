@@ -1,5 +1,7 @@
 package com.example.pizzeria.models;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -61,6 +63,7 @@ public class BBQChicken extends Pizza {
      * including pizza type, crust, size and toppings
      * @return  BBQChicken object as String
      */
+    @NonNull
     @Override
     public String toString(){
         return "BBQ Chicken " + super.toString();

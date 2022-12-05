@@ -13,6 +13,8 @@
     <string name="pizza_price">Pizza Price: $ </string>
     <string name="add_to_order">Add to Order</string>
     <string name="cart_empty">Cart Empty</string>
+    <string name="clear_cart">Clear Cart</string>
+    <string name="order_number">Order Number:</string>
     <string-array name="pizza_types">
         <item>Build Your Own</item>
         <item>Deluxe</item>
