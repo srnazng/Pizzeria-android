@@ -89,6 +89,7 @@ public class ToppingsAdapter extends RecyclerView.Adapter<ToppingsAdapter.ItemsH
                 else {
                     selectedToppings.remove(topping);
                 }
+                ChicagoActivity.calculatePrice(selectedToppings.size());
             }
         });
     }

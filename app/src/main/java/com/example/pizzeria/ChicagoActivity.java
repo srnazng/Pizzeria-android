@@ -34,12 +34,18 @@ public class ChicagoActivity extends AppCompatActivity {
     private Spinner spChicagoType;
     private ArrayList<Topping> toppings;
     private ToppingsAdapter toppingsAdapter;
-    private TextView tvChicagoCrust, tvChicagoPrice;
+    private TextView tvChicagoCrust;
+    private static TextView tvChicagoPrice;
     private RadioGroup rgChicagoSize;
     private RadioButton rbChicagoSelectedSize;
     private Button btnAddChicago;
-    private String PIZZA_PRICE;
+    private static String PIZZA_PRICE;
     private String PIZZA_CRUST;
+    private static String DELUXE;
+    private static String MEATZZA;
+    private static String BBQ_CHICKEN;
+    private static Size size;
+    private static String type;
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
     @Override
@@ -49,10 +55,22 @@ public class ChicagoActivity extends AppCompatActivity {
 
         PIZZA_PRICE = getResources().getString(R.string.pizza_price);
         PIZZA_CRUST = getResources().getString(R.string.crust);
+        DELUXE = getResources().getStringArray(R.array.pizza_types)[1];
+        BBQ_CHICKEN = getResources().getStringArray(R.array.pizza_types)[2];
+        MEATZZA = getResources().getStringArray(R.array.pizza_types)[3];
 
         tvChicagoCrust = findViewById(R.id.tvChicagoCrust);
         tvChicagoPrice = findViewById(R.id.tvChicagoPrice);
         btnAddChicago = findViewById(R.id.btnAddChicago);
+        rgChicagoSize = findViewById(R.id.rgChicagoSize);
+        rbChicagoSelectedSize = findViewById(R.id.rbtnMedium);
+        spChicagoType = findViewById(R.id.spChicagoType);
+        rvChicagoToppings = findViewById(R.id.rvChicagoToppings);
+
+        init();
+    }
+
+    private void init(){
         btnAddChicago.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,24 +78,24 @@ public class ChicagoActivity extends AppCompatActivity {
             }
         });
 
-        rgChicagoSize = findViewById(R.id.rgChicagoSize);
         rgChicagoSize.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-              @Override
-              public void onCheckedChanged(RadioGroup group, int checkedId)
-              {
-                  rbChicagoSelectedSize = findViewById(checkedId);
-              }
-          }
+             @Override
+             public void onCheckedChanged(RadioGroup group, int checkedId)
+             {
+                     rbChicagoSelectedSize = findViewById(checkedId);
+                     size = Size.toSize(rbChicagoSelectedSize.getText().toString());
+                     calculatePrice(ToppingsAdapter.selectedToppings.size());
+                 }
+             }
         );
-        rbChicagoSelectedSize = findViewById(R.id.rbtnMedium);
         rbChicagoSelectedSize.setSelected(true);
 
-        spChicagoType = findViewById(R.id.spChicagoType);
         spChicagoType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 setUpView();
                 toppingsAdapter.notifyDataSetChanged();
+                type = spChicagoType.getSelectedItem().toString();
             }
 
             @Override
@@ -86,7 +104,6 @@ public class ChicagoActivity extends AppCompatActivity {
             }
         });
 
-        rvChicagoToppings = findViewById(R.id.rvChicagoToppings);
         toppings = new ArrayList<>();
         toppingsAdapter = new ToppingsAdapter(this, toppings); //create the adapter
         setUpView(); //add the list of items to the ArrayList
@@ -154,7 +171,18 @@ public class ChicagoActivity extends AppCompatActivity {
         }
     }
 
-    private void calculatePrice(){
-
+    public static void calculatePrice(int numToppings){
+        if(type.equals(MEATZZA)){
+            tvChicagoPrice.setText(PIZZA_PRICE + Meatzza.calculatePrice(size));
+        }
+        else if(type.equals(DELUXE)){
+            tvChicagoPrice.setText(PIZZA_PRICE + Deluxe.calculatePrice(size));
+        }
+        else if(type.equals(BBQ_CHICKEN)){
+            tvChicagoPrice.setText(PIZZA_PRICE + BBQChicken.calculatePrice(size));
+        }
+        else{
+            tvChicagoPrice.setText(PIZZA_PRICE + df.format(BuildYourOwn.calculatePrice(size, numToppings)));
+        }
     }
 }

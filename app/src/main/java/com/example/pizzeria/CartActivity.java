@@ -15,7 +15,6 @@ public class CartActivity extends AppCompatActivity {
 
     TextView orderNumber;
     RecyclerView rvCartPizzas;
-    ArrayList<Integer> orderNumberList;
     ArrayList<Pizza> pizzaList;
 
 
@@ -27,14 +26,9 @@ public class CartActivity extends AppCompatActivity {
         orderNumber.setText("Order Number: " + StoreOrder.storeOrder.generateOrderId());
 
         rvCartPizzas = findViewById(R.id.rvPizzas);
-
+        pizzaList = StoreOrder.storeOrder.getCurrentOrder().getPizzaList();
         PizzaItemAdapter adapter = new PizzaItemAdapter(this, pizzaList); //create the adapter
         rvCartPizzas.setAdapter(adapter); //bind the list of items to the RecyclerView
     }
-
-    private void setPizzaList(){
-        pizzaList = StoreOrder.storeOrder.getCurrentOrder().getPizzaList();
-    }
-
 
 }
