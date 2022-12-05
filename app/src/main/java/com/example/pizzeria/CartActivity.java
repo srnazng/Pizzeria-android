@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +24,6 @@ import java.util.ArrayList;
  * @author Serena Zeng, Jackson Lee
  */
 public class CartActivity extends AppCompatActivity {
-
     TextView orderNumber;
     static TextView tvSubtotal;
     static TextView tvSalesTax;
@@ -30,6 +31,7 @@ public class CartActivity extends AppCompatActivity {
     RecyclerView rvCartPizzas;
     Button btnClearCart, btnPlaceOrder;
     ArrayList<Pizza> pizzaList;
+    private PizzaItemAdapter adapter;
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
     /**
@@ -52,10 +54,17 @@ public class CartActivity extends AppCompatActivity {
 
         pizzaList = new ArrayList<>();
         init();
-        PizzaItemAdapter adapter = new PizzaItemAdapter(this, pizzaList); //create the adapter
+        adapter = new PizzaItemAdapter(this, pizzaList); //create the adapter
         rvCartPizzas.setAdapter(adapter); //bind the list of items to the RecyclerView
         rvCartPizzas.setLayoutManager(new LinearLayoutManager(this));
+        initButtons();
+        updateCosts();
+    }
 
+    /**
+     * Set the onClick methods for buttons
+     */
+    private void initButtons(){
         btnClearCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,14 +81,21 @@ public class CartActivity extends AppCompatActivity {
                     Toast.makeText(CartActivity.this, "No Pizzas Added to Order", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                StoreOrder.storeOrder.completeCurrentOrder();
-                Toast.makeText(CartActivity.this, "Order Placed", Toast.LENGTH_SHORT).show();
-                adapter.notifyDataSetChanged();
-                init();
+                AlertDialog.Builder alert = new AlertDialog.Builder(CartActivity.this);
+                alert.setTitle("Cart");
+                alert.setMessage("Place Order");
+                alert.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        StoreOrder.storeOrder.completeCurrentOrder();
+                        Toast.makeText(CartActivity.this, "Order Placed", Toast.LENGTH_SHORT).show();
+                        adapter.notifyDataSetChanged();
+                        init();
+                    }
+                }).setNegativeButton("Cancel", null);
+                AlertDialog dialog = alert.create();
+                dialog.show();
             }
         });
-
-        updateCosts();
     }
 
     /**
