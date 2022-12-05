@@ -8,10 +8,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * The MainActivity class is the controller for the activity_main.xml file
+ * This class initializes UI components and handles user interaction events
+ * @author Serena Zeng, Jackson Lee
+ */
 public class MainActivity extends AppCompatActivity {
     private TextView tvChicagoPizza, tvNYPizza;
     private Button btnStoreOrders, btnCart;
 
+    /**
+     * Create a MainActivity activity, and load a saved instance
+     * of the activity is being reloaded. Bind listeners
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -29,6 +29,11 @@ import com.example.pizzeria.models.Topping;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+/**
+ * The ChicagoActivity class is the controller for the activity_chicago.xml page.
+ * This class initiates UI components and handles user interaction events
+ * @author Serena Zeng, Jackson Lee
+ */
 public class ChicagoActivity extends AppCompatActivity {
     private RecyclerView rvChicagoToppings;
     private Spinner spChicagoType;
@@ -48,6 +53,11 @@ public class ChicagoActivity extends AppCompatActivity {
     private static String type;
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
+    /**
+     * Create a ChicagoActivity activity, and load a saved instance of
+     * the activity if the activity is being reloaded
+     * @param savedInstanceState  saved past state of the activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +80,10 @@ public class ChicagoActivity extends AppCompatActivity {
         init();
     }
 
+    /**
+     * Bind listeners for all UI components, including add pizza button, size
+     * radio group, pizza type spinner, and toppings recycler view
+     */
     private void init(){
         btnAddChicago.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +126,10 @@ public class ChicagoActivity extends AppCompatActivity {
         rvChicagoToppings.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    /**
+     * Add a pizza to the current order.
+     * A toast is shown on success.
+     */
     private void addToOrder(){
         String pizzaType = spChicagoType.getSelectedItem().toString();
         Size size = Size.toSize(rbChicagoSelectedSize.getText().toString());
@@ -137,6 +155,10 @@ public class ChicagoActivity extends AppCompatActivity {
         Toast.makeText(ChicagoActivity.this, "Pizza Successfully Added to Cart!", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Populate the UI components of the page in accordance
+     * with the pizza type
+     */
     private void setUpView() {
         String type = spChicagoType.getSelectedItem().toString();
         Size size = Size.toSize(rbChicagoSelectedSize.getText().toString());
@@ -171,6 +193,11 @@ public class ChicagoActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Calculate the price of the pizza being ordered,
+     * and set the price text field in the UI
+     * @param numToppings  Number of toppings on the pizza
+     */
     public static void calculatePrice(int numToppings){
         if(type.equals(MEATZZA)){
             tvChicagoPrice.setText(PIZZA_PRICE + Meatzza.calculatePrice(size));

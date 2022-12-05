@@ -16,6 +16,11 @@ import com.example.pizzeria.models.StoreOrder;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+/**
+ * The CartActivity class is the controller class for the activity_cart.xml page.
+ * This class initiates UI components and handles user interaction events.
+ * @author Serena Zeng, Jackson Lee
+ */
 public class CartActivity extends AppCompatActivity {
 
     TextView orderNumber;
@@ -27,6 +32,11 @@ public class CartActivity extends AppCompatActivity {
     ArrayList<Pizza> pizzaList;
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
+    /**
+     * Create a CartActivity activity, and load a saved past state of the activity
+     * if the activity is being reloaded
+     * @param savedInstanceState  saved past state of the activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +82,10 @@ public class CartActivity extends AppCompatActivity {
         updateCosts();
     }
 
+    /**
+     * Set the order number in the UI, load the list of pizzas in the
+     * current order, and update the cost of the order in the UI
+     */
     private void init(){
         orderNumber.setText("Order Number: " + StoreOrder.storeOrder.generateOrderId());
         pizzaList.clear();
@@ -79,6 +93,9 @@ public class CartActivity extends AppCompatActivity {
         updateCosts();
     }
 
+    /**
+     * Update the costs of the order in the UI
+     */
     public static void updateCosts(){
         tvSubtotal.setText(df.format(StoreOrder.storeOrder.getCurrentOrder().getSubtotal()));
         tvSalesTax.setText(df.format(StoreOrder.storeOrder.getCurrentOrder().getSalesTax()));
