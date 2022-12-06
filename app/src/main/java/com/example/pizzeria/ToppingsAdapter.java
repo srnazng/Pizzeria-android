@@ -15,16 +15,9 @@ import com.example.pizzeria.models.Topping;
 import java.util.ArrayList;
 
 /**
- * This is an Adapter class to be used to instantiate an adapter for the RecyclerView.
- * Must extend RecyclerView.Adapter, which will enforce you to implement 3 methods:
- *      1. onCreateViewHolder, 2. onBindViewHolder, and 3. getItemCount
- *
- * You must use the data type <thisClassName.yourHolderName>, in this example
- * <ItemAdapter.ItemHolder>. This will enforce you to define a constructor for the
- * ItemAdapter and an inner class ItemsHolder (a static class)
- * The ItemsHolder class must extend RecyclerView.ViewHolder. In the constructor of this class,
- * you do something similar to the onCreate() method in an Activity.
- * @author Lily Chang
+ * The ToppingsAdapter class binds the topping options with items in the
+ * recycler views in the Chicago and New York activities
+ * @author Serena, Jackson
  */
 public class ToppingsAdapter extends RecyclerView.Adapter<ToppingsAdapter.ItemsHolder>{
     private Context context; //need the context to inflate the layout
@@ -33,6 +26,12 @@ public class ToppingsAdapter extends RecyclerView.Adapter<ToppingsAdapter.ItemsH
     private boolean isChicago;
     public static ArrayList<Topping> selectedToppings;
 
+    /**
+     * Create a ToppingsAdapter from the current context and list of toppings for the pizza type.
+     * @param context      Context of the activity
+     * @param items        List of toppings
+     * @param isChicago    true if is Chicago pizza, false otherwise
+     */
     public ToppingsAdapter(Context context, ArrayList<Topping> items, boolean isChicago) {
         this.context = context;
         this.items = items;
@@ -41,12 +40,16 @@ public class ToppingsAdapter extends RecyclerView.Adapter<ToppingsAdapter.ItemsH
         disableToppings = false;
     }
 
+    /**
+     * Set toppings as checkable or not
+     * @param disableToppings   true to disable, false otherwise
+     */
     public void setDisableToppings(boolean disableToppings){
         this.disableToppings = disableToppings;
     }
 
     /**
-     * This method will inflate the row layout for the items in the RecyclerView
+     * Inflate the row layout for the Topping items in the RecyclerView
      * @param parent
      * @param viewType
      * @return
@@ -62,10 +65,10 @@ public class ToppingsAdapter extends RecyclerView.Adapter<ToppingsAdapter.ItemsH
     }
 
     /**
-     * Assign data values for each row according to their "position" (index) when the item becomes
+     * Assign toppings to each row according to their "position" (index) when the item becomes
      * visible on the screen.
-     * @param holder the instance of ItemsHolder
-     * @param position the index of the item in the list of items
+     * @param holder    the instance of ItemsHolder
+     * @param position  the index of the item in the list of items
      */
     @Override
     public void onBindViewHolder(@NonNull ItemsHolder holder, int position) {
@@ -102,8 +105,8 @@ public class ToppingsAdapter extends RecyclerView.Adapter<ToppingsAdapter.ItemsH
     }
 
     /**
-     * Get the number of items in the ArrayList.
-     * @return the number of items in the list.
+     * Get the number of topping items in the ArrayList.
+     * @return the number of topping items in the list.
      */
     @Override
     public int getItemCount() {
@@ -116,6 +119,10 @@ public class ToppingsAdapter extends RecyclerView.Adapter<ToppingsAdapter.ItemsH
     public static class ItemsHolder extends RecyclerView.ViewHolder {
         private CheckBox cbTopping;
 
+        /**
+         * Create new ItemsHolder
+         * @param itemView  View of individual topping item
+         */
         public ItemsHolder(@NonNull View itemView) {
             super(itemView);
             cbTopping = itemView.findViewById(R.id.cbTopping);
