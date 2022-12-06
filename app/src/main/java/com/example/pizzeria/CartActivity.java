@@ -69,6 +69,7 @@ public class CartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 StoreOrder.storeOrder.getCurrentOrder().getPizzaList().clear();
+                pizzaList.clear();
                 adapter.notifyDataSetChanged();
                 updateCosts();
             }
