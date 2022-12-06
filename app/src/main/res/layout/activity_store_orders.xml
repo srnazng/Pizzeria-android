@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Order"
+        android:text="@string/order"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvStoreOrderTitle" />
 
@@ -32,7 +32,7 @@
         android:id="@+id/tvOrderTotalLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Order Total (tax included): $"
+        android:text="@string/order_total_tax_included"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -62,7 +62,7 @@
         android:id="@+id/spOrderNum"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:contentDescription="@string/order_number"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/tvOrderLabel"
@@ -73,7 +73,7 @@
         android:id="@+id/tvOrderTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0.00"
+        android:text="@string/zero_price"
         app:layout_constraintStart_toEndOf="@+id/tvOrderTotalLabel"
         app:layout_constraintTop_toTopOf="@+id/tvOrderTotalLabel" />
 

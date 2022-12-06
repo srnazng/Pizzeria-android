@@ -1,5 +1,7 @@
 package com.example.pizzeria.models;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -28,7 +30,7 @@ public class Meatzza extends Pizza{
      * @return ArrayList of Topping objects
      */
     public static ArrayList<Topping> getMeatzzaToppings(){
-        return new ArrayList<Topping>(Arrays.asList(Topping.PEPPERONI, Topping.SAUSAGE, Topping.HAM, Topping.BEEF));
+        return new ArrayList<>(Arrays.asList(Topping.PEPPERONI, Topping.SAUSAGE, Topping.HAM, Topping.BEEF));
     }
 
     /**
@@ -60,6 +62,7 @@ public class Meatzza extends Pizza{
      * including pizza type, crust, size and toppings
      * @return  Meatzza object as String
      */
+    @NonNull
     @Override
     public String toString(){
         return "Meatzza " + super.toString();

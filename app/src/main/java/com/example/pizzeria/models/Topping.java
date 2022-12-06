@@ -1,5 +1,7 @@
 package com.example.pizzeria.models;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +27,7 @@ public enum Topping {
      * Convert Topping to formatted String
      * @return  String of Topping
      */
+    @NonNull
     @Override
     public String toString(){
         return (this.name().charAt(0) + this.name().substring(1).toLowerCase()).replace("_", " ");

@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -43,13 +45,17 @@ public class NewYorkActivity extends AppCompatActivity {
     private RadioGroup rgNewYorkSize;
     private RadioButton rbNewYorkSelectedSize;
     private Button btnAddNewYork;
-    private static String PIZZA_PRICE;
-    private String PIZZA_CRUST;
-    private static String DELUXE;
-    private static String MEATZZA;
-    private static String BBQ_CHICKEN;
+    private ImageView ivNewYork;
+
+    private static final String PIZZA_CRUST = "Crust: ";
+    private static final String PIZZA_PRICE = "Pizza Price: $";
+    private static final String DELUXE = "Deluxe";
+    private static final String MEATZZA = "Meatzza";
+    private static final String BBQ_CHICKEN = "BBQ Chicken";
+
     private static Size size;
     private static String type;
+
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
     /**
@@ -62,12 +68,7 @@ public class NewYorkActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_york);
 
-        PIZZA_PRICE = getResources().getString(R.string.pizza_price);
-        PIZZA_CRUST = getResources().getString(R.string.crust);
-        DELUXE = getResources().getStringArray(R.array.pizza_types)[1];
-        BBQ_CHICKEN = getResources().getStringArray(R.array.pizza_types)[2];
-        MEATZZA = getResources().getStringArray(R.array.pizza_types)[3];
-
+        ivNewYork = findViewById(R.id.ivNewYork);
         tvNewYorkCrust = findViewById(R.id.tvNewYorkCrust);
         tvNewYorkPrice = findViewById(R.id.tvNewYorkPrice);
         btnAddNewYork = findViewById(R.id.btnAddNewYork);
@@ -75,6 +76,8 @@ public class NewYorkActivity extends AppCompatActivity {
         rbNewYorkSelectedSize = findViewById(R.id.rbtnMedium);
         spNewYorkType = findViewById(R.id.spNewYorkType);
         rvNewYorkToppings = findViewById(R.id.rvNewYorkToppings);
+
+        type = spNewYorkType.getSelectedItem().toString();
 
         init();
     }
@@ -84,31 +87,23 @@ public class NewYorkActivity extends AppCompatActivity {
      * radio group, pizza type spinner, and toppings recycler view
      */
     private void init(){
-        btnAddNewYork.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addToOrder();
-            }
-        });
+        btnAddNewYork.setOnClickListener(v -> addToOrder());
 
-        rgNewYorkSize.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                                                     @Override
-                                                     public void onCheckedChanged(RadioGroup group, int checkedId)
-                                                     {
-                                                         rbNewYorkSelectedSize = findViewById(checkedId);
-                                                         size = Size.toSize(rbNewYorkSelectedSize.getText().toString());
-                                                         calculatePrice(ToppingsAdapter.selectedToppings.size());
-                                                     }
-                                                 }
-        );
+        size = Size.MEDIUM;
+        rgNewYorkSize.setOnCheckedChangeListener((group, checkedId) -> {
+            rbNewYorkSelectedSize = findViewById(checkedId);
+            size = Size.toSize(rbNewYorkSelectedSize.getText().toString());
+            calculatePrice(ToppingsAdapter.selectedToppings.size());
+        });
         rbNewYorkSelectedSize.setSelected(true);
 
         spNewYorkType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                setUpView();
-                toppingsAdapter.notifyDataSetChanged();
                 type = spNewYorkType.getSelectedItem().toString();
+                toppingsAdapter.notifyDataSetChanged();
+                setUpView();
             }
 
             @Override
@@ -130,22 +125,21 @@ public class NewYorkActivity extends AppCompatActivity {
      * A toast is shown on success
      */
     private void addToOrder(){
-        String pizzaType = spNewYorkType.getSelectedItem().toString();
-        Size size = Size.toSize(rbNewYorkSelectedSize.getText().toString());
-
         NYPizza factory = new NYPizza();
         Pizza pizza;
-        if(pizzaType.equals("Deluxe")){
-            pizza = factory.createDeluxe();
-        }
-        else if(pizzaType.equals("BBQ Chicken")){
-            pizza = factory.createBBQChicken();
-        }
-        else if(pizzaType.equals("Meatzza")){
-            pizza = factory.createMeatzza();
-        }
-        else{
-            pizza = factory.createBuildYourOwn();
+        switch (type) {
+            case DELUXE:
+                pizza = factory.createDeluxe();
+                break;
+            case BBQ_CHICKEN:
+                pizza = factory.createBBQChicken();
+                break;
+            case MEATZZA:
+                pizza = factory.createMeatzza();
+                break;
+            default:
+                pizza = factory.createBuildYourOwn();
+                break;
         }
         pizza.setSize(size);
         pizza.add(ToppingsAdapter.selectedToppings);
@@ -158,38 +152,42 @@ public class NewYorkActivity extends AppCompatActivity {
      * Populate the UI components of the page in accordance
      * With the pizza type and size
      */
+    @SuppressLint("SetTextI18n")
     private void setUpView() {
-        String type = spNewYorkType.getSelectedItem().toString();
-        Size size = Size.toSize(rbNewYorkSelectedSize.getText().toString());
-
-        if(type.equals(getResources().getStringArray(R.array.pizza_types)[0])){
-            toppings.clear();
-            toppings.addAll(Topping.getAvailableToppings());
-            toppingsAdapter.setDisableToppings(false);
-            tvNewYorkCrust.setText(PIZZA_CRUST + Crust.HAND_TOSSED);
-            tvNewYorkPrice.setText(PIZZA_PRICE + df.format(BuildYourOwn.calculatePrice(size, toppings.size())));
+        toppings.clear();
+        int res;
+        switch (type) {
+            case MEATZZA:
+                toppings.addAll(Meatzza.getMeatzzaToppings());
+                toppingsAdapter.setDisableToppings(true);
+                tvNewYorkCrust.setText(PIZZA_CRUST + Crust.STUFFED);
+                tvNewYorkPrice.setText(PIZZA_PRICE + Meatzza.calculatePrice(size));
+                res = getResources().getIdentifier("ny_meatzza", "drawable", NewYorkActivity.this.getPackageName());
+                break;
+            case DELUXE:
+                toppings.addAll(Deluxe.getDeluxeToppings());
+                toppingsAdapter.setDisableToppings(true);
+                tvNewYorkCrust.setText(PIZZA_CRUST + Crust.DEEP_DISH);
+                tvNewYorkPrice.setText(PIZZA_PRICE + Deluxe.calculatePrice(size));
+                res = getResources().getIdentifier("ny_deluxe", "drawable", NewYorkActivity.this.getPackageName());
+                break;
+            case BBQ_CHICKEN:
+                toppings.addAll(BBQChicken.getBBQChickenToppings());
+                toppingsAdapter.setDisableToppings(true);
+                tvNewYorkCrust.setText(PIZZA_CRUST + Crust.PAN);
+                tvNewYorkPrice.setText(PIZZA_PRICE + BBQChicken.calculatePrice(size));
+                res = getResources().getIdentifier("ny_bbq_chicken", "drawable", NewYorkActivity.this.getPackageName());
+                break;
+            default:
+                toppings.addAll(Topping.getAvailableToppings());
+                ToppingsAdapter.selectedToppings.clear();
+                toppingsAdapter.setDisableToppings(false);
+                tvNewYorkCrust.setText(PIZZA_CRUST + Crust.PAN);
+                tvNewYorkPrice.setText(PIZZA_PRICE + df.format(BuildYourOwn.calculatePrice(size, ToppingsAdapter.selectedToppings.size())));
+                res = getResources().getIdentifier("ny_pizza", "drawable", NewYorkActivity.this.getPackageName());
+                break;
         }
-        else if(type.equals(getResources().getStringArray(R.array.pizza_types)[1])){
-            toppings.clear();
-            toppings.addAll(Deluxe.getDeluxeToppings());
-            toppingsAdapter.setDisableToppings(true);
-            tvNewYorkCrust.setText(PIZZA_CRUST + Crust.BROOKLYN);
-            tvNewYorkPrice.setText(PIZZA_PRICE + Deluxe.calculatePrice(size));
-        }
-        else if(type.equals(getResources().getStringArray(R.array.pizza_types)[2])){
-            toppings.clear();
-            toppings.addAll(BBQChicken.getBBQChickenToppings());
-            toppingsAdapter.setDisableToppings(true);
-            tvNewYorkCrust.setText(PIZZA_CRUST + Crust.THIN);
-            tvNewYorkPrice.setText(PIZZA_PRICE + BBQChicken.calculatePrice(size));
-        }
-        else{
-            toppings.clear();
-            toppings.addAll(Meatzza.getMeatzzaToppings());
-            toppingsAdapter.setDisableToppings(true);
-            tvNewYorkCrust.setText(PIZZA_CRUST + Crust.HAND_TOSSED);
-            tvNewYorkPrice.setText(PIZZA_PRICE + Meatzza.calculatePrice(size));
-        }
+        ivNewYork.setImageResource(res);
     }
 
     /**
@@ -198,17 +196,21 @@ public class NewYorkActivity extends AppCompatActivity {
      * @param numToppings   Number of toppings on the pizza
      */
     public static void calculatePrice(int numToppings){
-        if(type.equals(MEATZZA)){
-            tvNewYorkPrice.setText(PIZZA_PRICE + Meatzza.calculatePrice(size));
+        String price;
+        switch (type) {
+            case MEATZZA:
+                price = PIZZA_PRICE + Meatzza.calculatePrice(size);
+                break;
+            case DELUXE:
+                price = PIZZA_PRICE + Deluxe.calculatePrice(size);
+                break;
+            case BBQ_CHICKEN:
+                price = PIZZA_PRICE + BBQChicken.calculatePrice(size);
+                break;
+            default:
+                price = PIZZA_PRICE + df.format(BuildYourOwn.calculatePrice(size, numToppings));
+                break;
         }
-        else if(type.equals(DELUXE)){
-            tvNewYorkPrice.setText(PIZZA_PRICE + Deluxe.calculatePrice(size));
-        }
-        else if(type.equals(BBQ_CHICKEN)){
-            tvNewYorkPrice.setText(PIZZA_PRICE + BBQChicken.calculatePrice(size));
-        }
-        else{
-            tvNewYorkPrice.setText(PIZZA_PRICE + df.format(BuildYourOwn.calculatePrice(size, numToppings)));
-        }
+        tvNewYorkPrice.setText(price);
     }
 }

@@ -23,12 +23,12 @@
         android:id="@+id/spChicagoType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:entries="@array/pizza_types"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvChicagoStylePizza" />
+        app:layout_constraintTop_toBottomOf="@+id/ivChicago" />
 
     <RadioGroup
         android:id="@+id/rgChicagoSize"
@@ -95,10 +95,20 @@
         android:id="@+id/btnAddChicago"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="10dp"
         android:text="@string/add_to_order"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvChicagoPrice" />
+
+    <ImageView
+        android:id="@+id/ivChicago"
+        android:layout_width="wrap_content"
+        android:layout_height="140dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChicagoStylePizza"
+        app:srcCompat="@drawable/chicago_pizza" />
 </androidx.constraintlayout.widget.ConstraintLayout>

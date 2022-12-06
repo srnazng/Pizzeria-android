@@ -29,39 +29,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         tvChicagoPizza = findViewById(R.id.tvChicagoPizza);
-        tvChicagoPizza.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, ChicagoActivity.class);
-                startActivity(i);
-            }
+        tvChicagoPizza.setOnClickListener(v -> {
+            Intent i = new Intent(MainActivity.this, ChicagoActivity.class);
+            startActivity(i);
         });
-
         tvNYPizza = findViewById(R.id.tvNYPizza);
-        tvNYPizza.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, NewYorkActivity.class);
-                startActivity(i);
-            }
+        tvNYPizza.setOnClickListener(v -> {
+            Intent i = new Intent(MainActivity.this, NewYorkActivity.class);
+            startActivity(i);
         });
-
         btnStoreOrders = findViewById(R.id.btnStoreOrders);
-        btnStoreOrders.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, StoreOrdersActivity.class);
-                startActivity(i);
-            }
+        btnStoreOrders.setOnClickListener(v -> {
+            Intent i = new Intent(MainActivity.this, StoreOrdersActivity.class);
+            startActivity(i);
         });
-
         btnCart = findViewById(R.id.btnCart);
-        btnCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, CartActivity.class);
-                startActivity(i);
-            }
+        btnCart.setOnClickListener(v -> {
+            Intent i = new Intent(MainActivity.this, CartActivity.class);
+            startActivity(i);
         });
     }
 }

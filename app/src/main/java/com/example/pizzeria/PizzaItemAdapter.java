@@ -1,10 +1,10 @@
 package com.example.pizzeria;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,8 +23,8 @@ import java.util.ArrayList;
  */
 public class PizzaItemAdapter extends RecyclerView.Adapter<PizzaItemAdapter.ItemsHolder>{
 
-    private Context context;
-    private ArrayList<Pizza> pizzas;
+    private final Context context;
+    private final ArrayList<Pizza> pizzas;
 
     /**
      * Create a PizzaItemAdapter from the current context and list of pizzas.
@@ -58,18 +58,16 @@ public class PizzaItemAdapter extends RecyclerView.Adapter<PizzaItemAdapter.Item
      * @param holder the instance of ItemsHolder
      * @param position the index of the pizza item in the list of items
      */
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onBindViewHolder(@NonNull ItemsHolder holder, int position) {
         Pizza pizza = pizzas.get(position);
         holder.tvPizza.setText(pizza.toString());
-        holder.ivDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                StoreOrder.storeOrder.getCurrentOrder().getPizzaList().remove(pizza);
-                pizzas.remove(pizza);
-                notifyDataSetChanged();
-                CartActivity.updateCosts();
-            }
+        holder.ivDelete.setOnClickListener(v -> {
+            StoreOrder.storeOrder.getCurrentOrder().getPizzaList().remove(pizza);
+            pizzas.remove(pizza);
+            notifyDataSetChanged();
+            CartActivity.updateCosts();
         });
     }
 
@@ -86,8 +84,8 @@ public class PizzaItemAdapter extends RecyclerView.Adapter<PizzaItemAdapter.Item
      * Get the views from the row layout file, similar to the onCreate() method.
      */
     public static class ItemsHolder extends RecyclerView.ViewHolder {
-        private TextView tvPizza;
-        private ImageView ivDelete;
+        private final TextView tvPizza;
+        private final ImageView ivDelete;
 
         public ItemsHolder(@NonNull View itemView) {
             super(itemView);
@@ -95,6 +93,5 @@ public class PizzaItemAdapter extends RecyclerView.Adapter<PizzaItemAdapter.Item
             ivDelete = itemView.findViewById(R.id.ivDelete);
         }
     }
-
 
 }

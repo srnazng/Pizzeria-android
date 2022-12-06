@@ -13,8 +13,7 @@ public class ChicagoPizza implements PizzaFactory {
      */
     @Override
     public Pizza createDeluxe() {
-        Pizza pizza = new Deluxe(Crust.DEEP_DISH, true);
-        return pizza;
+        return new Deluxe(Crust.DEEP_DISH, true);
     }
 
     /**
@@ -23,8 +22,7 @@ public class ChicagoPizza implements PizzaFactory {
      */
     @Override
     public Pizza createMeatzza() {
-        Pizza pizza = new Meatzza(Crust.STUFFED, true);
-        return pizza;
+        return new Meatzza(Crust.STUFFED, true);
     }
 
     /**
@@ -33,8 +31,7 @@ public class ChicagoPizza implements PizzaFactory {
      */
     @Override
     public Pizza createBBQChicken() {
-        Pizza pizza = new BBQChicken(Crust.PAN, true);
-        return pizza;
+        return new BBQChicken(Crust.PAN, true);
     }
 
     /**
@@ -43,7 +40,6 @@ public class ChicagoPizza implements PizzaFactory {
      */
     @Override
     public Pizza createBuildYourOwn() {
-        Pizza pizza = new BuildYourOwn(Crust.PAN, true);
-        return pizza;
+        return new BuildYourOwn(Crust.PAN, true);
     }
 }

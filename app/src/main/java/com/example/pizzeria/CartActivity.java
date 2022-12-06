@@ -4,10 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,13 +23,12 @@ import java.util.ArrayList;
  * @author Serena Zeng, Jackson Lee
  */
 public class CartActivity extends AppCompatActivity {
-    TextView orderNumber;
-    static TextView tvSubtotal;
-    static TextView tvSalesTax;
-    static TextView tvCartTotal;
-    RecyclerView rvCartPizzas;
-    Button btnClearCart, btnPlaceOrder;
-    ArrayList<Pizza> pizzaList;
+    private TextView orderNumber;
+    private static TextView tvSubtotal;
+    private static TextView tvSalesTax;
+    private static TextView tvCartTotal;
+    private Button btnClearCart, btnPlaceOrder;
+    private ArrayList<Pizza> pizzaList;
     private PizzaItemAdapter adapter;
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
@@ -48,7 +46,7 @@ public class CartActivity extends AppCompatActivity {
         tvSalesTax = findViewById(R.id.tvSalesTax);
         tvCartTotal = findViewById(R.id.tvCartTotal);
         orderNumber = findViewById(R.id.tvOrderNum);
-        rvCartPizzas = findViewById(R.id.rvPizzas);
+        RecyclerView rvCartPizzas = findViewById(R.id.rvPizzas);
         btnClearCart = findViewById(R.id.btnClearCart);
         btnPlaceOrder = findViewById(R.id.btnPlaceOrder);
 
@@ -64,38 +62,31 @@ public class CartActivity extends AppCompatActivity {
     /**
      * Set the onClick methods for buttons
      */
+    @SuppressLint("NotifyDataSetChanged")
     private void initButtons(){
-        btnClearCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                StoreOrder.storeOrder.getCurrentOrder().getPizzaList().clear();
-                pizzaList.clear();
-                adapter.notifyDataSetChanged();
-                updateCosts();
-            }
+        btnClearCart.setOnClickListener(v -> {
+            StoreOrder.storeOrder.getCurrentOrder().getPizzaList().clear();
+            pizzaList.clear();
+            adapter.notifyDataSetChanged();
+            updateCosts();
         });
 
-        btnPlaceOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(StoreOrder.storeOrder.getCurrentOrder().getPizzaList().size() < 1){
-                    Toast.makeText(CartActivity.this, "No Pizzas Added to Order", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                AlertDialog.Builder alert = new AlertDialog.Builder(CartActivity.this);
-                alert.setTitle("Cart");
-                alert.setMessage("Place Order");
-                alert.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        StoreOrder.storeOrder.completeCurrentOrder();
-                        Toast.makeText(CartActivity.this, "Order Placed", Toast.LENGTH_SHORT).show();
-                        adapter.notifyDataSetChanged();
-                        init();
-                    }
-                }).setNegativeButton("Cancel", null);
-                AlertDialog dialog = alert.create();
-                dialog.show();
+        btnPlaceOrder.setOnClickListener(v -> {
+            if(StoreOrder.storeOrder.getCurrentOrder().getPizzaList().size() < 1){
+                Toast.makeText(CartActivity.this, "No Pizzas Added to Order", Toast.LENGTH_SHORT).show();
+                return;
             }
+            AlertDialog.Builder alert = new AlertDialog.Builder(CartActivity.this);
+            alert.setTitle("Cart");
+            alert.setMessage("Place Order");
+            alert.setPositiveButton("Confirm", (dialog, which) -> {
+                StoreOrder.storeOrder.completeCurrentOrder();
+                Toast.makeText(CartActivity.this, "Order Placed", Toast.LENGTH_SHORT).show();
+                adapter.notifyDataSetChanged();
+                init();
+            }).setNegativeButton("Cancel", null);
+            AlertDialog dialog = alert.create();
+            dialog.show();
         });
     }
 
@@ -104,7 +95,8 @@ public class CartActivity extends AppCompatActivity {
      * current order, and update the cost of the order in the UI
      */
     private void init(){
-        orderNumber.setText("Order Number: " + StoreOrder.storeOrder.generateOrderId());
+        String orderNum = "Order Number: " + StoreOrder.storeOrder.generateOrderId();
+        orderNumber.setText(orderNum);
         pizzaList.clear();
         pizzaList.addAll(StoreOrder.storeOrder.getCurrentOrder().getPizzaList());
         updateCosts();

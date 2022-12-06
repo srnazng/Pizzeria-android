@@ -1,5 +1,7 @@
 package com.example.pizzeria.models;
 
+import androidx.annotation.NonNull;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -10,8 +12,8 @@ import java.util.ArrayList;
  */
 public class Order implements Customizable {
     private boolean valid;
-    private ArrayList<Pizza> pizzaList;
-    private int orderNumber;
+    private final ArrayList<Pizza> pizzaList;
+    private final int orderNumber;
     private static final double SALES_TAX_RATE = 0.06625;
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
@@ -31,13 +33,6 @@ public class Order implements Customizable {
      */
     public int getOrderNumber() {
         return orderNumber;
-    }
-
-    /**
-     * Remove all pizzas in order
-     */
-    public void clear(){
-        pizzaList = new ArrayList<>();
     }
 
     /**
@@ -117,13 +112,14 @@ public class Order implements Customizable {
      * Convert Order to String containing order number, pizzas in order, and order total
      * @return  Order object as String
      */
+    @NonNull
     @Override
     public String toString(){
-        String returnString = "Order Number " + orderNumber + "\n";
+        StringBuilder returnString = new StringBuilder("Order Number " + orderNumber + "\n");
         for(Pizza p : pizzaList){
-            returnString += p.toString() + "\n";
+            returnString.append(p.toString()).append("\n");
         }
-        returnString += "Order total: $" + df.format(getTotal()) + "\n";
-        return returnString;
+        returnString.append("Order total: $").append(df.format(getTotal())).append("\n");
+        return returnString.toString();
     }
 }

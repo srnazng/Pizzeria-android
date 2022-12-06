@@ -1,5 +1,7 @@
 package com.example.pizzeria.models;
 
+import androidx.annotation.NonNull;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -12,8 +14,8 @@ import java.util.ArrayList;
 public abstract class Pizza implements Customizable {
     private static final DecimalFormat df = new DecimalFormat("0.00");
     public static final int MAX_TOPPINGS = 7;
-    private ArrayList<Topping> toppings;
-    private Crust crust;
+    private final ArrayList<Topping> toppings;
+    private final Crust crust;
     private Size size;
     public abstract double price();
     protected boolean isChicago;
@@ -95,6 +97,7 @@ public abstract class Pizza implements Customizable {
      * crust, size, price, and toppings
      * @return  String of Pizza object
      */
+    @NonNull
     @Override
     public String toString(){
         StringBuilder str = new StringBuilder("(");

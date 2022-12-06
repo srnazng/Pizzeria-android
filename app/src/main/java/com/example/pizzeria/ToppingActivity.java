@@ -3,7 +3,6 @@ package com.example.pizzeria;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.CheckBox;
 
 /**
  * The ToppingActivity class is the controller for the activity_topping.xml, which is

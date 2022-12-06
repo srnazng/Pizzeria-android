@@ -4,8 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,22 +21,24 @@ import java.util.ArrayList;
  * @author Serena, Jackson
  */
 public class ToppingsAdapter extends RecyclerView.Adapter<ToppingsAdapter.ItemsHolder>{
-    private Context context; //need the context to inflate the layout
-    private ArrayList<Topping> items; //need the data binding to each row of RecyclerView
+    public static Context context; //need the context to inflate the layout
+    private final ArrayList<Topping> items; //need the data binding to each row of RecyclerView
     private boolean disableToppings;
-    private boolean isChicago;
+    public static boolean isChicago;
     public static ArrayList<Topping> selectedToppings;
+
+    private static final int MAX_TOPPINGS = 7;
 
     /**
      * Create a ToppingsAdapter from the current context and list of toppings for the pizza type.
      * @param context      Context of the activity
      * @param items        List of toppings
-     * @param isChicago    true if is Chicago pizza, false otherwise
+     * @param chicago    true if is Chicago pizza, false otherwise
      */
-    public ToppingsAdapter(Context context, ArrayList<Topping> items, boolean isChicago) {
+    public ToppingsAdapter(Context context, ArrayList<Topping> items, boolean chicago) {
         this.context = context;
         this.items = items;
-        this.isChicago = isChicago;
+        isChicago = chicago;
         selectedToppings = new ArrayList<>();
         disableToppings = false;
     }
@@ -81,25 +84,28 @@ public class ToppingsAdapter extends RecyclerView.Adapter<ToppingsAdapter.ItemsH
             holder.cbTopping.setEnabled(false);
         }
         else{
-            holder.cbTopping.setChecked(false);
             holder.cbTopping.setEnabled(true);
+            holder.cbTopping.setChecked(selectedToppings.contains(topping));
         }
 
-        holder.cbTopping.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    selectedToppings.add(topping);
-                }
-                else {
-                    selectedToppings.remove(topping);
-                }
-                if(isChicago){
-                    ChicagoActivity.calculatePrice(selectedToppings.size());
+        holder.cbTopping.setOnClickListener(v -> {
+            if(holder.cbTopping.isChecked()){
+                if(selectedToppings.size() >= MAX_TOPPINGS){
+                    Toast.makeText(context, "Maximum 7 toppings", Toast.LENGTH_SHORT).show();
+                    holder.cbTopping.setChecked(false);
                 }
                 else{
-                    NewYorkActivity.calculatePrice(selectedToppings.size());
+                    selectedToppings.add(topping);
                 }
+            }
+            else {
+                selectedToppings.remove(topping);
+            }
+            if(isChicago){
+                ChicagoActivity.calculatePrice(selectedToppings.size());
+            }
+            else{
+                NewYorkActivity.calculatePrice(selectedToppings.size());
             }
         });
     }
@@ -117,7 +123,7 @@ public class ToppingsAdapter extends RecyclerView.Adapter<ToppingsAdapter.ItemsH
      * Get the views from the row layout file, similar to the onCreate() method.
      */
     public static class ItemsHolder extends RecyclerView.ViewHolder {
-        private CheckBox cbTopping;
+        private final CheckBox cbTopping;
 
         /**
          * Create new ItemsHolder

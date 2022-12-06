@@ -1,8 +1,5 @@
 package com.example.pizzeria.models;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 /**
@@ -83,29 +80,10 @@ public class StoreOrder implements Customizable {
     /**
      * Cancel order with given order id
      * @param id    order number
-     * @return      true if successfully cancelled, false otherwise
      */
-    public boolean cancelOrder(int id){
+    public void cancelOrder(int id){
         Order o = getOrder(id);
-        return remove(o);
-    }
-
-    /**
-     * Export valid orders to a file
-     * @param file  File to write on
-     */
-    public void export(File file){
-        try{
-            PrintWriter pw = new PrintWriter(file);
-            for (Order order : orderList){
-                if(order.isValid()){
-                    pw.println(order);
-                }
-            }
-            pw.close();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        remove(o);
     }
 
     /**
