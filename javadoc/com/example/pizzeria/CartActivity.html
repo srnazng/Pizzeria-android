@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":9};
+var data = {"i0":10,"i1":10,"i2":10,"i3":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -178,6 +178,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 extends androidx.appcompat.app.AppCompatActivity</pre>
 <div class="block">The CartActivity class is the controller class for the activity_cart.xml page.
  This class initiates UI components and handles user interaction events.</div>
+<dl>
+<dt><span class="simpleTagLabel">Author:</span></dt>
+<dd>Serena Zeng, Jackson Lee</dd>
+</dl>
 </li>
 </ul>
 </div>
@@ -216,42 +220,47 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>(package private) android.widget.Button</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#btnClearCart">btnClearCart</a></span></code></th>
+<td class="colFirst"><code>private <a href="PizzaItemAdapter.html" title="class in com.example.pizzeria">PizzaItemAdapter</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#adapter">adapter</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>(package private) android.widget.Button</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#btnPlaceOrder">btnPlaceOrder</a></span></code></th>
+<td class="colFirst"><code>private android.widget.Button</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#btnClearCart">btnClearCart</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>(package private) android.widget.TextView</code></td>
+<td class="colFirst"><code>private android.widget.Button</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#btnPlaceOrder">btnPlaceOrder</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private static java.text.DecimalFormat</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#df">df</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private android.widget.TextView</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#orderNumber">orderNumber</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>(package private) java.util.ArrayList&lt;<a href="models/Pizza.html" title="class in com.example.pizzeria.models">Pizza</a>&gt;</code></td>
+<td class="colFirst"><code>private java.util.ArrayList&lt;<a href="models/Pizza.html" title="class in com.example.pizzeria.models">Pizza</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#pizzaList">pizzaList</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>(package private) androidx.recyclerview.widget.RecyclerView</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#rvCartPizzas">rvCartPizzas</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>(package private) static android.widget.TextView</code></td>
+<td class="colFirst"><code>private static android.widget.TextView</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#tvCartTotal">tvCartTotal</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="altColor">
-<td class="colFirst"><code>(package private) static android.widget.TextView</code></td>
+<tr class="rowColor">
+<td class="colFirst"><code>private static android.widget.TextView</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#tvSalesTax">tvSalesTax</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="rowColor">
-<td class="colFirst"><code>(package private) static android.widget.TextView</code></td>
+<tr class="altColor">
+<td class="colFirst"><code>private static android.widget.TextView</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#tvSubtotal">tvSubtotal</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -316,6 +325,21 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>private void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#init()">init</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Set the order number in the UI, load the list of pizzas in the
+ current order, and update the cost of the order in the UI</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>private void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initButtons()">initButtons</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Set the onClick methods for buttons</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onCreate(android.os.Bundle)">onCreate</a></span>&#8203;(android.os.Bundle&nbsp;savedInstanceState)</code></th>
 <td class="colLast">
@@ -323,7 +347,7 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
  if the activity is being reloaded</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#updateCosts()">updateCosts</a></span>()</code></th>
 <td class="colLast">
@@ -423,7 +447,7 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>orderNumber</h4>
-<pre>android.widget.TextView orderNumber</pre>
+<pre>private&nbsp;android.widget.TextView orderNumber</pre>
 </li>
 </ul>
 <a id="tvSubtotal">
@@ -432,7 +456,7 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>tvSubtotal</h4>
-<pre>static&nbsp;android.widget.TextView tvSubtotal</pre>
+<pre>private static&nbsp;android.widget.TextView tvSubtotal</pre>
 </li>
 </ul>
 <a id="tvSalesTax">
@@ -441,7 +465,7 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>tvSalesTax</h4>
-<pre>static&nbsp;android.widget.TextView tvSalesTax</pre>
+<pre>private static&nbsp;android.widget.TextView tvSalesTax</pre>
 </li>
 </ul>
 <a id="tvCartTotal">
@@ -450,16 +474,7 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>tvCartTotal</h4>
-<pre>static&nbsp;android.widget.TextView tvCartTotal</pre>
-</li>
-</ul>
-<a id="rvCartPizzas">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>rvCartPizzas</h4>
-<pre>androidx.recyclerview.widget.RecyclerView rvCartPizzas</pre>
+<pre>private static&nbsp;android.widget.TextView tvCartTotal</pre>
 </li>
 </ul>
 <a id="btnClearCart">
@@ -468,7 +483,7 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>btnClearCart</h4>
-<pre>android.widget.Button btnClearCart</pre>
+<pre>private&nbsp;android.widget.Button btnClearCart</pre>
 </li>
 </ul>
 <a id="btnPlaceOrder">
@@ -477,16 +492,34 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>btnPlaceOrder</h4>
-<pre>android.widget.Button btnPlaceOrder</pre>
+<pre>private&nbsp;android.widget.Button btnPlaceOrder</pre>
 </li>
 </ul>
 <a id="pizzaList">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>pizzaList</h4>
-<pre>java.util.ArrayList&lt;<a href="models/Pizza.html" title="class in com.example.pizzeria.models">Pizza</a>&gt; pizzaList</pre>
+<pre>private&nbsp;java.util.ArrayList&lt;<a href="models/Pizza.html" title="class in com.example.pizzeria.models">Pizza</a>&gt; pizzaList</pre>
+</li>
+</ul>
+<a id="adapter">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>adapter</h4>
+<pre>private&nbsp;<a href="PizzaItemAdapter.html" title="class in com.example.pizzeria">PizzaItemAdapter</a> adapter</pre>
+</li>
+</ul>
+<a id="df">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>df</h4>
+<pre>private static final&nbsp;java.text.DecimalFormat df</pre>
 </li>
 </ul>
 </li>
@@ -533,6 +566,27 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>savedInstanceState</code> - saved past state of the activity</dd>
 </dl>
+</li>
+</ul>
+<a id="initButtons()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>initButtons</h4>
+<pre class="methodSignature">private&nbsp;void&nbsp;initButtons()</pre>
+<div class="block">Set the onClick methods for buttons</div>
+</li>
+</ul>
+<a id="init()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>init</h4>
+<pre class="methodSignature">private&nbsp;void&nbsp;init()</pre>
+<div class="block">Set the order number in the UI, load the list of pizzas in the
+ current order, and update the cost of the order in the UI</div>
 </li>
 </ul>
 <a id="updateCosts()">

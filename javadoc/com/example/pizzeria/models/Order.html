@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -88,13 +88,13 @@ loadScripts(document, 'script');</script>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -139,12 +139,64 @@ extends java.lang.Object
 implements <a href="Customizable.html" title="interface in com.example.pizzeria.models">Customizable</a></pre>
 <div class="block">The Order class represents an order of one or more pizzas
  and uniquely identified by an integer id.</div>
+<dl>
+<dt><span class="simpleTagLabel">Author:</span></dt>
+<dd>Serena Zeng, Jackson Lee</dd>
+</dl>
 </li>
 </ul>
 </div>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<section role="region">
+<ul class="blockList">
+<li class="blockList"><a id="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="memberSummary">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colSecond" scope="col">Field</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private static double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#DEFAULT_PRICE">DEFAULT_PRICE</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private static java.text.DecimalFormat</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#df">df</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#orderNumber">orderNumber</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private java.util.ArrayList&lt;<a href="Pizza.html" title="class in com.example.pizzeria.models">Pizza</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#pizzaList">pizzaList</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private static double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#SALES_TAX_RATE">SALES_TAX_RATE</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#valid">valid</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+</section>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <section role="region">
 <ul class="blockList">
@@ -191,69 +243,62 @@ implements <a href="Customizable.html" title="interface in com.example.pizzeria.
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#clear()">clear</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Remove all pizzas in order</div>
-</td>
-</tr>
-<tr id="i2" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getOrderNumber()">getOrderNumber</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get unique order id</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;<a href="Pizza.html" title="class in com.example.pizzeria.models">Pizza</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPizzaList()">getPizzaList</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get list of pizzas in order</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSalesTax()">getSalesTax</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Calculate sales tax of order</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSubtotal()">getSubtotal</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Calculate subtotal of pizzas in order</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTotal()">getTotal</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Calculate total price (includes subtotal and sales tax) of order)</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isValid()">isValid</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Check if order is valid</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#remove(java.lang.Object)">remove</a></span>&#8203;(java.lang.Object&nbsp;obj)</code></th>
 <td class="colLast">
 <div class="block">Remove pizza from order</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setInvalid()">setInvalid</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Marks order as invalid (after deletion)</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">
@@ -277,6 +322,78 @@ implements <a href="Customizable.html" title="interface in com.example.pizzeria.
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<section role="region">
+<ul class="blockList">
+<li class="blockList"><a id="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a id="valid">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>valid</h4>
+<pre>private&nbsp;boolean valid</pre>
+</li>
+</ul>
+<a id="pizzaList">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>pizzaList</h4>
+<pre>private final&nbsp;java.util.ArrayList&lt;<a href="Pizza.html" title="class in com.example.pizzeria.models">Pizza</a>&gt; pizzaList</pre>
+</li>
+</ul>
+<a id="orderNumber">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>orderNumber</h4>
+<pre>private final&nbsp;int orderNumber</pre>
+</li>
+</ul>
+<a id="SALES_TAX_RATE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SALES_TAX_RATE</h4>
+<pre>private static final&nbsp;double SALES_TAX_RATE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../constant-values.html#com.example.pizzeria.models.Order.SALES_TAX_RATE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a id="DEFAULT_PRICE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DEFAULT_PRICE</h4>
+<pre>private static final&nbsp;double DEFAULT_PRICE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../constant-values.html#com.example.pizzeria.models.Order.DEFAULT_PRICE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a id="df">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>df</h4>
+<pre>private static final&nbsp;java.text.DecimalFormat df</pre>
+</li>
+</ul>
+</li>
+</ul>
+</section>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <section role="region">
 <ul class="blockList">
@@ -317,16 +434,6 @@ implements <a href="Customizable.html" title="interface in com.example.pizzeria.
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>order number</dd>
 </dl>
-</li>
-</ul>
-<a id="clear()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>clear</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;clear()</pre>
-<div class="block">Remove all pizzas in order</div>
 </li>
 </ul>
 <a id="getPizzaList()">
@@ -451,7 +558,8 @@ implements <a href="Customizable.html" title="interface in com.example.pizzeria.
 <ul class="blockListLast">
 <li class="blockList">
 <h4>toString</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;toString()</pre>
+<pre class="methodSignature">@NonNull
+public&nbsp;java.lang.String&nbsp;toString()</pre>
 <div class="block">Convert Order to String containing order number, pizzas in order, and order total</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
@@ -513,13 +621,13 @@ implements <a href="Customizable.html" title="interface in com.example.pizzeria.
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>

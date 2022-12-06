@@ -52,6 +52,7 @@ public class NewYorkActivity extends AppCompatActivity {
     private static final String DELUXE = "Deluxe";
     private static final String MEATZZA = "Meatzza";
     private static final String BBQ_CHICKEN = "BBQ Chicken";
+    private static final int DEFAULT_SELECT = 0;
 
     private static Size size;
     private static String type;
@@ -108,7 +109,7 @@ public class NewYorkActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                spNewYorkType.setSelection(0);
+                spNewYorkType.setSelection(DEFAULT_SELECT);
             }
         });
 
@@ -183,7 +184,8 @@ public class NewYorkActivity extends AppCompatActivity {
                 ToppingsAdapter.selectedToppings.clear();
                 toppingsAdapter.setDisableToppings(false);
                 tvNewYorkCrust.setText(PIZZA_CRUST + Crust.PAN);
-                tvNewYorkPrice.setText(PIZZA_PRICE + df.format(BuildYourOwn.calculatePrice(size, ToppingsAdapter.selectedToppings.size())));
+                tvNewYorkPrice.setText(PIZZA_PRICE
+                        + df.format(BuildYourOwn.calculatePrice(size, ToppingsAdapter.selectedToppings.size())));
                 res = getResources().getIdentifier("ny_pizza", "drawable", NewYorkActivity.this.getPackageName());
                 break;
         }

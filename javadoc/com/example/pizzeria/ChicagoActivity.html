@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":9,"i1":10};
+var data = {"i0":10,"i1":9,"i2":10,"i3":10,"i4":10};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -94,7 +94,7 @@ loadScripts(document, 'script');</script>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -178,6 +178,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 extends androidx.appcompat.app.AppCompatActivity</pre>
 <div class="block">The ChicagoActivity class is the controller for the activity_chicago.xml page.
  This class initiates UI components and handles user interaction events</div>
+<dl>
+<dt><span class="simpleTagLabel">Author:</span></dt>
+<dd>Serena Zeng, Jackson Lee</dd>
+</dl>
 </li>
 </ul>
 </div>
@@ -208,6 +212,109 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <!--   -->
 </a>
 <h3>Field Summary</h3>
+<table class="memberSummary">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colSecond" scope="col">Field</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private static java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#BBQ_CHICKEN">BBQ_CHICKEN</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private android.widget.Button</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#btnAddChicago">btnAddChicago</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private static int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#DEFAULT_SELECT">DEFAULT_SELECT</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private static java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#DELUXE">DELUXE</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private static java.text.DecimalFormat</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#df">df</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private android.widget.ImageView</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#ivChicago">ivChicago</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private static java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#MEATZZA">MEATZZA</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private static java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#PIZZA_CRUST">PIZZA_CRUST</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private static java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#PIZZA_PRICE">PIZZA_PRICE</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private android.widget.RadioButton</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#rbChicagoSelectedSize">rbChicagoSelectedSize</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private android.widget.RadioGroup</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#rgChicagoSize">rgChicagoSize</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private androidx.recyclerview.widget.RecyclerView</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#rvChicagoToppings">rvChicagoToppings</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private static <a href="models/Size.html" title="enum in com.example.pizzeria.models">Size</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#size">size</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private android.widget.Spinner</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#spChicagoType">spChicagoType</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private java.util.ArrayList&lt;<a href="models/Topping.html" title="enum in com.example.pizzeria.models">Topping</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toppings">toppings</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private <a href="ToppingsAdapter.html" title="class in com.example.pizzeria">ToppingsAdapter</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toppingsAdapter">toppingsAdapter</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private android.widget.TextView</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#tvChicagoCrust">tvChicagoCrust</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private static android.widget.TextView</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#tvChicagoPrice">tvChicagoPrice</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private static java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#type">type</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+</table>
 <ul class="blockList">
 <li class="blockList"><a id="fields.inherited.from.class.android.app.Activity">
 <!--   -->
@@ -268,6 +375,13 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>private void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addToOrder()">addToOrder</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Add a pizza to the current order.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#calculatePrice(int)">calculatePrice</a></span>&#8203;(int&nbsp;numToppings)</code></th>
 <td class="colLast">
@@ -275,12 +389,28 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
  and set the price text field in the UI</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>private void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#init()">init</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Bind listeners for all UI components, including add pizza button, size
+ radio group, pizza type spinner, and toppings recycler view</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onCreate(android.os.Bundle)">onCreate</a></span>&#8203;(android.os.Bundle&nbsp;savedInstanceState)</code></th>
 <td class="colLast">
 <div class="block">Create a ChicagoActivity activity, and load a past saved state of
  the activity if the activity is being reloaded</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>private void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setUpView()">setUpView</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Populate the UI components of the page in accordance
+ with the pizza type and size.</div>
 </td>
 </tr>
 </table>
@@ -363,6 +493,211 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<section role="region">
+<ul class="blockList">
+<li class="blockList"><a id="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a id="rvChicagoToppings">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>rvChicagoToppings</h4>
+<pre>private&nbsp;androidx.recyclerview.widget.RecyclerView rvChicagoToppings</pre>
+</li>
+</ul>
+<a id="spChicagoType">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>spChicagoType</h4>
+<pre>private&nbsp;android.widget.Spinner spChicagoType</pre>
+</li>
+</ul>
+<a id="toppings">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>toppings</h4>
+<pre>private&nbsp;java.util.ArrayList&lt;<a href="models/Topping.html" title="enum in com.example.pizzeria.models">Topping</a>&gt; toppings</pre>
+</li>
+</ul>
+<a id="toppingsAdapter">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>toppingsAdapter</h4>
+<pre>private&nbsp;<a href="ToppingsAdapter.html" title="class in com.example.pizzeria">ToppingsAdapter</a> toppingsAdapter</pre>
+</li>
+</ul>
+<a id="tvChicagoCrust">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>tvChicagoCrust</h4>
+<pre>private&nbsp;android.widget.TextView tvChicagoCrust</pre>
+</li>
+</ul>
+<a id="tvChicagoPrice">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>tvChicagoPrice</h4>
+<pre>private static&nbsp;android.widget.TextView tvChicagoPrice</pre>
+</li>
+</ul>
+<a id="rgChicagoSize">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>rgChicagoSize</h4>
+<pre>private&nbsp;android.widget.RadioGroup rgChicagoSize</pre>
+</li>
+</ul>
+<a id="rbChicagoSelectedSize">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>rbChicagoSelectedSize</h4>
+<pre>private&nbsp;android.widget.RadioButton rbChicagoSelectedSize</pre>
+</li>
+</ul>
+<a id="btnAddChicago">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>btnAddChicago</h4>
+<pre>private&nbsp;android.widget.Button btnAddChicago</pre>
+</li>
+</ul>
+<a id="ivChicago">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ivChicago</h4>
+<pre>private&nbsp;android.widget.ImageView ivChicago</pre>
+</li>
+</ul>
+<a id="PIZZA_CRUST">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>PIZZA_CRUST</h4>
+<pre>private static final&nbsp;java.lang.String PIZZA_CRUST</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#com.example.pizzeria.ChicagoActivity.PIZZA_CRUST">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a id="PIZZA_PRICE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>PIZZA_PRICE</h4>
+<pre>private static final&nbsp;java.lang.String PIZZA_PRICE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#com.example.pizzeria.ChicagoActivity.PIZZA_PRICE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a id="DELUXE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DELUXE</h4>
+<pre>private static final&nbsp;java.lang.String DELUXE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#com.example.pizzeria.ChicagoActivity.DELUXE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a id="MEATZZA">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>MEATZZA</h4>
+<pre>private static final&nbsp;java.lang.String MEATZZA</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#com.example.pizzeria.ChicagoActivity.MEATZZA">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a id="BBQ_CHICKEN">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>BBQ_CHICKEN</h4>
+<pre>private static final&nbsp;java.lang.String BBQ_CHICKEN</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#com.example.pizzeria.ChicagoActivity.BBQ_CHICKEN">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a id="DEFAULT_SELECT">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DEFAULT_SELECT</h4>
+<pre>private static final&nbsp;int DEFAULT_SELECT</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#com.example.pizzeria.ChicagoActivity.DEFAULT_SELECT">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a id="size">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>size</h4>
+<pre>private static&nbsp;<a href="models/Size.html" title="enum in com.example.pizzeria.models">Size</a> size</pre>
+</li>
+</ul>
+<a id="type">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>type</h4>
+<pre>private static&nbsp;java.lang.String type</pre>
+</li>
+</ul>
+<a id="df">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>df</h4>
+<pre>private static final&nbsp;java.text.DecimalFormat df</pre>
+</li>
+</ul>
+</li>
+</ul>
+</section>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <section role="region">
 <ul class="blockList">
@@ -404,6 +739,39 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>savedInstanceState</code> - saved past state of the activity</dd>
 </dl>
+</li>
+</ul>
+<a id="init()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>init</h4>
+<pre class="methodSignature">private&nbsp;void&nbsp;init()</pre>
+<div class="block">Bind listeners for all UI components, including add pizza button, size
+ radio group, pizza type spinner, and toppings recycler view</div>
+</li>
+</ul>
+<a id="addToOrder()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addToOrder</h4>
+<pre class="methodSignature">private&nbsp;void&nbsp;addToOrder()</pre>
+<div class="block">Add a pizza to the current order.
+ A toast is shown on success.</div>
+</li>
+</ul>
+<a id="setUpView()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setUpView</h4>
+<pre class="methodSignature">private&nbsp;void&nbsp;setUpView()</pre>
+<div class="block">Populate the UI components of the page in accordance
+ with the pizza type and size.</div>
 </li>
 </ul>
 <a id="calculatePrice(int)">
@@ -479,7 +847,7 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>

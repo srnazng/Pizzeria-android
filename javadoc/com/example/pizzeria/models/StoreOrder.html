@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -139,6 +139,10 @@ extends java.lang.Object
 implements <a href="Customizable.html" title="interface in com.example.pizzeria.models">Customizable</a></pre>
 <div class="block">The StoreOrder class implements the Customizable
  interface and contains a list of all orders of a store.</div>
+<dl>
+<dt><span class="simpleTagLabel">Author:</span></dt>
+<dd>Serena Zeng, Jackson Lee</dd>
+</dl>
 </li>
 </ul>
 </div>
@@ -158,6 +162,16 @@ implements <a href="Customizable.html" title="interface in com.example.pizzeria.
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colSecond" scope="col">Field</th>
 <th class="colLast" scope="col">Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private <a href="Order.html" title="class in com.example.pizzeria.models">Order</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#currentOrder">currentOrder</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private java.util.ArrayList&lt;<a href="Order.html" title="class in com.example.pizzeria.models">Order</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#orderList">orderList</a></span></code></th>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static <a href="StoreOrder.html" title="class in com.example.pizzeria.models">StoreOrder</a></code></td>
@@ -211,7 +225,7 @@ implements <a href="Customizable.html" title="interface in com.example.pizzeria.
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>boolean</code></td>
+<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#cancelOrder(int)">cancelOrder</a></span>&#8203;(int&nbsp;id)</code></th>
 <td class="colLast">
 <div class="block">Cancel order with given order id</div>
@@ -226,41 +240,34 @@ implements <a href="Customizable.html" title="interface in com.example.pizzeria.
 </td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#export(java.io.File)">export</a></span>&#8203;(java.io.File&nbsp;file)</code></th>
-<td class="colLast">
-<div class="block">Export valid orders to a file</div>
-</td>
-</tr>
-<tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#generateOrderId()">generateOrderId</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Generate a unique order id</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="Order.html" title="class in com.example.pizzeria.models">Order</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCurrentOrder()">getCurrentOrder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Sets current order if null and then gets current order</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="Order.html" title="class in com.example.pizzeria.models">Order</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getOrder(int)">getOrder</a></span>&#8203;(int&nbsp;id)</code></th>
 <td class="colLast">
 <div class="block">Get order based on order number</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;java.lang.Integer&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getOrderNumbers()">getOrderNumbers</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get list of valid order numbers</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#remove(java.lang.Object)">remove</a></span>&#8203;(java.lang.Object&nbsp;obj)</code></th>
 <td class="colLast">
@@ -291,6 +298,24 @@ implements <a href="Customizable.html" title="interface in com.example.pizzeria.
 <!--   -->
 </a>
 <h3>Field Detail</h3>
+<a id="orderList">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>orderList</h4>
+<pre>private&nbsp;java.util.ArrayList&lt;<a href="Order.html" title="class in com.example.pizzeria.models">Order</a>&gt; orderList</pre>
+</li>
+</ul>
+<a id="currentOrder">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>currentOrder</h4>
+<pre>private&nbsp;<a href="Order.html" title="class in com.example.pizzeria.models">Order</a> currentOrder</pre>
+</li>
+</ul>
 <a id="storeOrder">
 <!--   -->
 </a>
@@ -404,27 +429,11 @@ implements <a href="Customizable.html" title="interface in com.example.pizzeria.
 <ul class="blockList">
 <li class="blockList">
 <h4>cancelOrder</h4>
-<pre class="methodSignature">public&nbsp;boolean&nbsp;cancelOrder&#8203;(int&nbsp;id)</pre>
+<pre class="methodSignature">public&nbsp;void&nbsp;cancelOrder&#8203;(int&nbsp;id)</pre>
 <div class="block">Cancel order with given order id</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>id</code> - order number</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>true if successfully cancelled, false otherwise</dd>
-</dl>
-</li>
-</ul>
-<a id="export(java.io.File)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>export</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;export&#8203;(java.io.File&nbsp;file)</pre>
-<div class="block">Export valid orders to a file</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>file</code> - File to write on</dd>
 </dl>
 </li>
 </ul>

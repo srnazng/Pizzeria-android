@@ -49,7 +49,12 @@ android.applicationVariants.all { variant ->
             ext.androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
             classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar)
 
-            options.addStringOption "-show-members", "package"
+            exclude "**/R**"
+            exclude "**/BuildConfig*"
+
+            options.addStringOption "-show-members"
+            options.author = true
+            options.memberLevel = JavadocMemberLevel.PRIVATE
         }
     }
 }

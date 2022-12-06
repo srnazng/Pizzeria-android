@@ -53,6 +53,7 @@ public class ChicagoActivity extends AppCompatActivity {
     private static final String DELUXE = "Deluxe";
     private static final String MEATZZA = "Meatzza";
     private static final String BBQ_CHICKEN = "BBQ Chicken";
+    private static final int DEFAULT_SELECT = 0;
 
     private static Size size;
     private static String type;
@@ -108,7 +109,7 @@ public class ChicagoActivity extends AppCompatActivity {
             }
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                spChicagoType.setSelection(0);
+                spChicagoType.setSelection(DEFAULT_SELECT);
             }
         });
 
@@ -169,21 +170,22 @@ public class ChicagoActivity extends AppCompatActivity {
                 toppingsAdapter.setDisableToppings(true);
                 tvChicagoCrust.setText(PIZZA_CRUST + Crust.DEEP_DISH);
                 tvChicagoPrice.setText(PIZZA_PRICE + Deluxe.calculatePrice(size));
-                res = getResources().getIdentifier("chicago_deluxe", "drawable", ChicagoActivity.this.getPackageName());
+                res = getResources().getIdentifier("chicago_deluxe","drawable", ChicagoActivity.this.getPackageName());
                 break;
             case BBQ_CHICKEN:
                 toppings.addAll(BBQChicken.getBBQChickenToppings());
                 toppingsAdapter.setDisableToppings(true);
                 tvChicagoCrust.setText(PIZZA_CRUST + Crust.PAN);
                 tvChicagoPrice.setText(PIZZA_PRICE + BBQChicken.calculatePrice(size));
-                res = getResources().getIdentifier("chicago_bbq_chicken", "drawable", ChicagoActivity.this.getPackageName());
+                res = getResources().getIdentifier("chicago_bbq_chicken","drawable", ChicagoActivity.this.getPackageName());
                 break;
             default:
                 toppings.addAll(Topping.getAvailableToppings());
                 ToppingsAdapter.selectedToppings.clear();
                 toppingsAdapter.setDisableToppings(false);
                 tvChicagoCrust.setText(PIZZA_CRUST + Crust.PAN);
-                tvChicagoPrice.setText(PIZZA_PRICE + df.format(BuildYourOwn.calculatePrice(size, ToppingsAdapter.selectedToppings.size())));
+                tvChicagoPrice.setText(PIZZA_PRICE
+                        + df.format(BuildYourOwn.calculatePrice(size, ToppingsAdapter.selectedToppings.size())));
                 res = getResources().getIdentifier("chicago_pizza", "drawable", ChicagoActivity.this.getPackageName());
                 break;
         }

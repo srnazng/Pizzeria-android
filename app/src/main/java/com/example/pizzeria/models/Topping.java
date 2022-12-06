@@ -13,6 +13,9 @@ public enum Topping {
     PEPPERONI, SAUSAGE, PINEAPPLE, MUSHROOM, BBQ_CHICKEN, GREEN_PEPPER,
     BROCCOLI, HAM, TOMATOES, ONION, CHEDDAR, PROVOLONE, BEEF;
 
+    private static final int FIRST_LETTER = 0;
+    private static final int SECOND_LETTER = 1;
+
     /**
      * Get list of all toppings
      * @return  ArrayList of Topping objects
@@ -30,6 +33,6 @@ public enum Topping {
     @NonNull
     @Override
     public String toString(){
-        return (this.name().charAt(0) + this.name().substring(1).toLowerCase()).replace("_", " ");
+        return (this.name().charAt(FIRST_LETTER) + this.name().substring(SECOND_LETTER).toLowerCase()).replace("_", " ");
     }
 }

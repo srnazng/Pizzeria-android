@@ -67,12 +67,14 @@ public class StoreOrdersActivity extends AppCompatActivity {
 
         btnCancelOrder.setOnClickListener(v -> {
             if(spOrderNum.getSelectedItem() == null){
-                Toast.makeText(StoreOrdersActivity.this, "No Order Selected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(StoreOrdersActivity.this,
+                        "No Order Selected", Toast.LENGTH_SHORT).show();
                 return;
             }
             int orderNum = Integer.parseInt(spOrderNum.getSelectedItem().toString());
             StoreOrder.storeOrder.cancelOrder(orderNum);
-            Toast.makeText(StoreOrdersActivity.this, "Order " + orderNum + " cancelled", Toast.LENGTH_SHORT).show();
+            Toast.makeText(StoreOrdersActivity.this,
+                    "Order " + orderNum + " cancelled", Toast.LENGTH_SHORT).show();
             init();
         });
 

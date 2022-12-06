@@ -15,6 +15,7 @@ public class Order implements Customizable {
     private final ArrayList<Pizza> pizzaList;
     private final int orderNumber;
     private static final double SALES_TAX_RATE = 0.06625;
+    private static final double DEFAULT_PRICE = 0;
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
     /**
@@ -48,7 +49,7 @@ public class Order implements Customizable {
      * @return  subtotal as a double
      */
     public double getSubtotal(){
-        double amount = 0;
+        double amount = DEFAULT_PRICE;
         for(Pizza p : pizzaList){
             amount += p.price();
         }

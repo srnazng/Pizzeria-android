@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -94,7 +94,7 @@ loadScripts(document, 'script');</script>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -178,6 +178,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 extends androidx.appcompat.app.AppCompatActivity</pre>
 <div class="block">The StoreOrdersActivity class is the controller for the activity_store_orders.xml page.
  This class initiates all UI components and handles user interaction events.</div>
+<dl>
+<dt><span class="simpleTagLabel">Author:</span></dt>
+<dd>Serena Zeng, Jackson Lee</dd>
+</dl>
 </li>
 </ul>
 </div>
@@ -208,6 +212,39 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <!--   -->
 </a>
 <h3>Field Summary</h3>
+<table class="memberSummary">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colSecond" scope="col">Field</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private static java.text.DecimalFormat</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#df">df</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private android.widget.ListView</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#lvOrder">lvOrder</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private <a href="models/Order.html" title="class in com.example.pizzeria.models">Order</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#order">order</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>private android.widget.Spinner</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#spOrderNum">spOrderNum</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>private android.widget.TextView</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#tvOrderTotal">tvOrderTotal</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+</table>
 <ul class="blockList">
 <li class="blockList"><a id="fields.inherited.from.class.android.app.Activity">
 <!--   -->
@@ -268,11 +305,33 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>private void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#clearList()">clearList</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Clear the LIstView of orders</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>private void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#init()">init</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Populate UI components of the page upon creation of the activity
+ or deletion of an order.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onCreate(android.os.Bundle)">onCreate</a></span>&#8203;(android.os.Bundle&nbsp;savedInstanceState)</code></th>
 <td class="colLast">
 <div class="block">Create a StoreOrdersActivity activity, and load a past saved state
  of the activity if the activity is being reloaded.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>private void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#updateList()">updateList</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Populate the ListView of orders by setting its adapter</div>
 </td>
 </tr>
 </table>
@@ -355,6 +414,61 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<section role="region">
+<ul class="blockList">
+<li class="blockList"><a id="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a id="spOrderNum">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>spOrderNum</h4>
+<pre>private&nbsp;android.widget.Spinner spOrderNum</pre>
+</li>
+</ul>
+<a id="tvOrderTotal">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>tvOrderTotal</h4>
+<pre>private&nbsp;android.widget.TextView tvOrderTotal</pre>
+</li>
+</ul>
+<a id="lvOrder">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>lvOrder</h4>
+<pre>private&nbsp;android.widget.ListView lvOrder</pre>
+</li>
+</ul>
+<a id="order">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>order</h4>
+<pre>private&nbsp;<a href="models/Order.html" title="class in com.example.pizzeria.models">Order</a> order</pre>
+</li>
+</ul>
+<a id="df">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>df</h4>
+<pre>private static final&nbsp;java.text.DecimalFormat df</pre>
+</li>
+</ul>
+</li>
+</ul>
+</section>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <section role="region">
 <ul class="blockList">
@@ -384,7 +498,7 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <a id="onCreate(android.os.Bundle)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>onCreate</h4>
 <pre class="methodSignature">protected&nbsp;void&nbsp;onCreate&#8203;(android.os.Bundle&nbsp;savedInstanceState)</pre>
@@ -397,6 +511,37 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>savedInstanceState</code> - past saved state of activity.</dd>
 </dl>
+</li>
+</ul>
+<a id="init()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>init</h4>
+<pre class="methodSignature">private&nbsp;void&nbsp;init()</pre>
+<div class="block">Populate UI components of the page upon creation of the activity
+ or deletion of an order.</div>
+</li>
+</ul>
+<a id="updateList()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>updateList</h4>
+<pre class="methodSignature">private&nbsp;void&nbsp;updateList()</pre>
+<div class="block">Populate the ListView of orders by setting its adapter</div>
+</li>
+</ul>
+<a id="clearList()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>clearList</h4>
+<pre class="methodSignature">private&nbsp;void&nbsp;clearList()</pre>
+<div class="block">Clear the LIstView of orders</div>
 </li>
 </ul>
 </li>
@@ -457,7 +602,7 @@ extends androidx.appcompat.app.AppCompatActivity</pre>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
