@@ -14,7 +14,7 @@ public class PizzaItemActivity extends AppCompatActivity {
     /**
      * Create PizzaItemActivity activity, and load a past saved state
      * of the activity if the activity is being reloaded.
-     * @param savedInstanceState
+     * @param savedInstanceState    bundle containing state data
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

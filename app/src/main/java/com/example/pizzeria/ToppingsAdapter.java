@@ -50,9 +50,9 @@ public class ToppingsAdapter extends RecyclerView.Adapter<ToppingsAdapter.ItemsH
 
     /**
      * Inflate the row layout for the Topping items in the RecyclerView
-     * @param parent
-     * @param viewType
-     * @return
+     * @param parent    parent ViewGroup of new view to be created
+     * @param viewType  view type constant
+     * @return          ItemsHolder with inflated view
      */
     @NonNull
     @Override

@@ -38,9 +38,9 @@ public class PizzaItemAdapter extends RecyclerView.Adapter<PizzaItemAdapter.Item
 
     /**
      * This method will inflate the row layout for the pizza items in the RecyclerView
-     * @param parent  parent viewgroup of new view to be created
+     * @param parent    parent ViewGroup of new view to be created
      * @param viewType  view type constant
-     * @return
+     * @return          ItemsHolder with inflated view
      */
     @NonNull
     @Override
