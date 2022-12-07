@@ -22,6 +22,7 @@
     <string name="place_order">Place Order</string>
     <string name="order">Order</string>
     <string name="order_total_tax_included">Order Total (tax included): $</string>
+    <string name="topping">topping</string>
     <string-array name="pizza_types">
         <item>Build Your Own</item>
         <item>Deluxe</item>

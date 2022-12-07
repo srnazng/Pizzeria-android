@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -79,6 +80,9 @@ public class ToppingsAdapter extends RecyclerView.Adapter<ToppingsAdapter.ItemsH
         Topping topping = items.get(position);
         holder.cbTopping.setText(topping.toString());
 
+        int res =  context.getResources().getIdentifier(topping.name().toLowerCase(), "drawable", context.getPackageName());
+        holder.ivTopping.setImageResource(res);
+
         if (disableToppings){
             holder.cbTopping.setChecked(true);
             holder.cbTopping.setEnabled(false);
@@ -124,6 +128,7 @@ public class ToppingsAdapter extends RecyclerView.Adapter<ToppingsAdapter.ItemsH
      */
     public static class ItemsHolder extends RecyclerView.ViewHolder {
         private final CheckBox cbTopping;
+        private ImageView ivTopping;
 
         /**
          * Create new ItemsHolder
@@ -132,6 +137,7 @@ public class ToppingsAdapter extends RecyclerView.Adapter<ToppingsAdapter.ItemsH
         public ItemsHolder(@NonNull View itemView) {
             super(itemView);
             cbTopping = itemView.findViewById(R.id.cbTopping);
+            ivTopping = itemView.findViewById(R.id.ivTopping);
         }
     }
 }
