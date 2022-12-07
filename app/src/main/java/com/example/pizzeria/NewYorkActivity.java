@@ -161,21 +161,21 @@ public class NewYorkActivity extends AppCompatActivity {
             case MEATZZA:
                 toppings.addAll(Meatzza.getMeatzzaToppings());
                 toppingsAdapter.setDisableToppings(true);
-                tvNewYorkCrust.setText(PIZZA_CRUST + Crust.STUFFED);
+                tvNewYorkCrust.setText(PIZZA_CRUST + Crust.HAND_TOSSED);
                 tvNewYorkPrice.setText(PIZZA_PRICE + Meatzza.calculatePrice(size));
                 res = getResources().getIdentifier("ny_meatzza", "drawable", NewYorkActivity.this.getPackageName());
                 break;
             case DELUXE:
                 toppings.addAll(Deluxe.getDeluxeToppings());
                 toppingsAdapter.setDisableToppings(true);
-                tvNewYorkCrust.setText(PIZZA_CRUST + Crust.DEEP_DISH);
+                tvNewYorkCrust.setText(PIZZA_CRUST + Crust.BROOKLYN);
                 tvNewYorkPrice.setText(PIZZA_PRICE + Deluxe.calculatePrice(size));
                 res = getResources().getIdentifier("ny_deluxe", "drawable", NewYorkActivity.this.getPackageName());
                 break;
             case BBQ_CHICKEN:
                 toppings.addAll(BBQChicken.getBBQChickenToppings());
                 toppingsAdapter.setDisableToppings(true);
-                tvNewYorkCrust.setText(PIZZA_CRUST + Crust.PAN);
+                tvNewYorkCrust.setText(PIZZA_CRUST + Crust.THIN);
                 tvNewYorkPrice.setText(PIZZA_PRICE + BBQChicken.calculatePrice(size));
                 res = getResources().getIdentifier("ny_bbq_chicken", "drawable", NewYorkActivity.this.getPackageName());
                 break;
@@ -183,7 +183,7 @@ public class NewYorkActivity extends AppCompatActivity {
                 toppings.addAll(Topping.getAvailableToppings());
                 ToppingsAdapter.selectedToppings.clear();
                 toppingsAdapter.setDisableToppings(false);
-                tvNewYorkCrust.setText(PIZZA_CRUST + Crust.PAN);
+                tvNewYorkCrust.setText(PIZZA_CRUST + Crust.HAND_TOSSED);
                 tvNewYorkPrice.setText(PIZZA_PRICE
                         + df.format(BuildYourOwn.calculatePrice(size, ToppingsAdapter.selectedToppings.size())));
                 res = getResources().getIdentifier("ny_pizza", "drawable", NewYorkActivity.this.getPackageName());

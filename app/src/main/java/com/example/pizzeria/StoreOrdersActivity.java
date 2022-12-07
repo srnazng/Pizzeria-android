@@ -41,12 +41,10 @@ public class StoreOrdersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_orders);
-
         spOrderNum = findViewById(R.id.spOrderNum);
         ImageView btnCancelOrder = findViewById(R.id.btnCancelOrder);
         tvOrderTotal = findViewById(R.id.tvOrderTotal);
         lvOrder = findViewById(R.id.lvOrder);
-
         spOrderNum.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -54,7 +52,6 @@ public class StoreOrdersActivity extends AppCompatActivity {
                 tvOrderTotal.setText(df.format(order.getTotal()));
                 updateList();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
                 ArrayList<Integer> orderNums = StoreOrder.storeOrder.getOrderNumbers();
@@ -64,7 +61,6 @@ public class StoreOrdersActivity extends AppCompatActivity {
                 }
             }
         });
-
         btnCancelOrder.setOnClickListener(v -> {
             if(spOrderNum.getSelectedItem() == null){
                 Toast.makeText(StoreOrdersActivity.this,
@@ -77,7 +73,6 @@ public class StoreOrdersActivity extends AppCompatActivity {
                     "Order " + orderNum + " cancelled", Toast.LENGTH_SHORT).show();
             init();
         });
-
         init();
     }
 
